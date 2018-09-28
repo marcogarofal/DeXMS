@@ -53,7 +53,7 @@ Add dependency :
 </dependency>
 ```
 	
-*  Generate BC as follow :
+*  Generate Mediator as follow :
 
 ```
 VsbManager vsbm = new VsbManager();
@@ -66,7 +66,7 @@ After executing this lines of codes, the BC will be generated into the temporary
 
 
 
-**4.  GIDL example**
+**4.  DeX-IDL examples**
 
 <pre>
 
