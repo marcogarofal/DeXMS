@@ -1,6 +1,6 @@
-**1.  BCgenerator**
+**1.  DeXMS**
 
-The Binding Component generator (BCgenerator) is a development and execution environment dedicated to complex distributed applications of the future Internet.
+Data eXchange Mediator Synthesizer  (DeXMS) is a development and execution environment dedicated to complex distributed applications of the future Internet.
 
 These applications are open and dynamic choreographies of extremely heterogeneous objects and services, including lightweight integrated systems (such as sensors, actuators and networks of the latter), mobile systems (such as smartphone applications), and systems resource-rich computing (such as systems hosted on corporate servers and cloud infrastructures).
 
@@ -21,17 +21,17 @@ BCgenerator ensures interoperability of services and things developped in Java.
 
 **3.  Inteconnecting services and things**
 
-To interconnect services and things, developer has to generate a middleware artifact that we call Binding Component (BC) that ensures this interconnection :
+To interconnect services and things, developer has to generate a middleware artifact that we call Mediator that ensures this interconnection :
 
-![Binding Component](https://gitlab.inria.fr/pntumba/vsb-web-console/raw/master/vsbwebconsole/WebContent/css/images/BC.png)
+![Mediator](https://gitlab.inria.fr/pntumba/vsb-web-console/raw/master/vsbwebconsole/WebContent/css/images/BC.png)
 
 For instance based on the above figure, to generate the BC we need to follow this steps :
 
 *  Create a maven based project
 
-*  Creating the Generic Interface Description Language (GIDL) of the service or thing to interconnect 
+*  Creating the  Data eXchange Interface Description Language (DeX-IDL) of the service or thing to interconnect 
  
-Relying on the above figure, we have to create the GIDL of the Temperature ressource. By using the [gidl eclipse plugin](https://gitlab.inria.fr/zefxis/GIDL) or the [IoT Web Console](https://gitlab.inria.fr/pntumba/vsb-web-console/wikis/home).
+Relying on the above figure, we have to create the DeX-IDL of the Temperature ressource. By using the [gidl eclipse plugin](https://gitlab.inria.fr/zefxis/DeX-IDL) or the [IoT Web Console](https://gitlab.inria.fr/pntumba/vsb-web-console/wikis/home).
 
 *  Updating the pom.xml 
 
