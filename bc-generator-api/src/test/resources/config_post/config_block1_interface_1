@@ -1,0 +1,1 @@
+{"subcomponent_port":"5849","subcomponent_address":"http:\/\/localhost","invocation_address":"http:\/\/api.trafikinfo.trafikverket.se/","service_name":"BCTrafficverketRoadconditionSoapEndpoint","bc_manager_servlet_port":"2207","bc_rest_service_port":"8565","target_namespace":"eu.chorevolution.vsb.bindingcomponent.generated"}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gidl:GIDLModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gidl="http://eu.chorevolution/modelingnotations/gidl" hostAddress="http://jinx.viktoria.chalmers.se:3002/" protocol="REST">
+  <hasInterfaces role="provider">
+    <hasOperations name="getWeather" type="two_way_sync" qos="reliable">
+      <hasScope name="getWeather" verb="POST" uri="getWeather"/>
+      <inputData name="request" context="body">
+        <hasDataType xsi:type="gidl:ComplexType" name="RequestRoot" occurences="one">
+        <hasDataType xsi:type="gidl:ComplexType" name="weatherInformationRequest" occurences="one">
+          <hasDataType xsi:type="gidl:SimpleType" name="lat" occurences="one" type="string"/>
+          <hasDataType xsi:type="gidl:SimpleType" name="lon" occurences="one" type="string"/>
+          </hasDataType>
+        </hasDataType>
+      </inputData>
+      <outputData name="response" context="body">
+      <hasDataType xsi:type="gidl:ComplexType" name="ResponseRoot" occurences="one">
+        <hasDataType xsi:type="gidl:ComplexType" name="weatherInformationResponse" occurences="one">
+          <hasDataType xsi:type="gidl:SimpleType" name="roadTemperature" occurences="one" type="string"/>
+          <hasDataType xsi:type="gidl:SimpleType" name="airTemperature" occurences="one" type="string"/>
+          <hasDataType xsi:type="gidl:SimpleType" name="airRelativeHumidity" occurences="one" type="string"/>
+          <hasDataType xsi:type="gidl:SimpleType" name="windForce" occurences="one" type="string"/>
+        </hasDataType>
+       </hasDataType>
+      </outputData>
+    </hasOperations>
+  </hasInterfaces>
+</gidl:GIDLModel>

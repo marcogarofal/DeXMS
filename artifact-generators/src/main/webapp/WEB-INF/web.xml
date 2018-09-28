@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<display-name>Binding Component Application</display-name>
+	<description>
+        This is a simple web application with a source code organization.
+    </description>
+
+	<!-- Configuration of Endpoint BC SOAP Component
+	
+	<servlet>
+		<servlet-name>AxisServlet</servlet-name>
+		<servlet-class>org.apache.axis2.transport.http.AxisServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		 <url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	
+	 -->
+	
+	<!-- <servlet> <servlet-name>BCStarterServlet</servlet-name> <servlet-class>eu.chorevolution.vsb.bc.war.BCStarterServlet</servlet-class> 
+		</servlet> <servlet-mapping> <servlet-name>BCStarterServlet</servlet-name> 
+		<url-pattern>/BCStarterServlet</url-pattern> </servlet-mapping> -->
+	<servlet>
+		<servlet-name>RestServlet</servlet-name>
+		<servlet-class>eu.chorevolution.vsb.artifact.war.RestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>RestServlet</servlet-name>
+		<url-pattern>/RestServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StartBcManagerServlet</servlet-name>
+		<servlet-class>eu.chorevolution.vsb.artifact.war.StartBcManagerServlet</servlet-class>
+		 <load-on-startup>0</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StartBcManagerServlet</servlet-name>
+		<url-pattern>/bcm</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Configuration of set invocation address Begin -->
+
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/BaseService</url-pattern>
+	</servlet-mapping>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>WEB-INF/setinvaddr-context.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Configuration of set invocation address End -->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

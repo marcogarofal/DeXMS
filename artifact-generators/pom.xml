@@ -1,0 +1,182 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>eu.chorevolution.BCgenerator</groupId>
+		<artifactId>BCgenerator</artifactId>
+		<version>2.1.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>artifact-generators</artifactId>
+	<name>artifact-generators</name>
+	<description>artifact-generators provides classes to generate a BC WAR and generic interface which each concrete protocol implementation MUST implement to generate its concrete endpoints or clients</description>
+	<repositories>
+		<!-- <repository> <id>repository.jboss.org</id> <name>JBoss Repository</name> 
+			<url>http://mvnrepository.com/artifact/org.jboss.shrinkwrap</url> </repository> -->
+		<repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.org</url>
+		</repository>
+	</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.12.RELEASE</spring.version>
+		<cxf.version>3.1.11</cxf.version>
+		<jax.ws.rs>2.0.1</jax.ws.rs>
+		<version.shrinkwrap>1.2.6</version.shrinkwrap>
+		<version.shrinkwrap.resolvers>3.0.0</version.shrinkwrap.resolvers>
+		<BCgenerator.version>2.1.1-SNAPSHOT</BCgenerator.version>
+	</properties>
+	<dependencies>
+		<!-- Chorevolution -->
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gmdl-utils</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>bc-manager</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-api</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-dpws</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-mqtt</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-websocket</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>compiler</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+
+		<!-- RestLet -->
+		<dependency>
+			<groupId>org.restlet.jse</groupId>
+			<artifactId>org.restlet</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+
+		<!-- CodeModel -->
+		<dependency>
+			<groupId>com.sun.codemodel</groupId>
+			<artifactId>codemodel</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+
+		<!-- ShrinkWrap -->
+		<dependency>
+			<groupId>org.jboss.shrinkwrap</groupId>
+			<artifactId>shrinkwrap-api</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap</groupId>
+			<artifactId>shrinkwrap-impl-base</artifactId>
+			<version>1.2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-api-maven-embedded</artifactId>
+			<version>${version.shrinkwrap.resolvers}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-depchain</artifactId>
+			<version>${version.shrinkwrap.resolvers}</version>
+			<type>pom</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven</artifactId>
+			<version>${version.shrinkwrap.resolvers}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
+			<version>${version.shrinkwrap.resolvers}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.shrinkwrap.resolver</groupId>
+			<artifactId>shrinkwrap-resolver-impl-maven-archive</artifactId>
+			<version>${version.shrinkwrap.resolvers}</version>
+		</dependency>
+	
+		<!-- jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.7.3</version>
+		</dependency>
+
+		<!-- Set invocation address dependencies -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxws</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-transports-http-jetty</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>${jax.ws.rs}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+	</dependencies>
+</project>

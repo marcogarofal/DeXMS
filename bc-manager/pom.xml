@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>eu.chorevolution.BCgenerator</groupId>
+		<artifactId>BCgenerator</artifactId>
+		<version>2.1.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>bc-manager</artifactId>
+	<name>bc-manager</name>
+	<description>bc-manager exposes a REST interface to configure, start and stop a deployed Binding Component</description>
+	
+	<properties>
+		<axis2.version>1.7.5</axis2.version>
+		<axis2.stable.version>1.7.5</axis2.stable.version>
+		<BCgenerator.version>2.1.1-SNAPSHOT</BCgenerator.version>
+	</properties>
+	
+	<dependencies>
+		<!-- Chorevolution -->
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gmdl-utils</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>service-parser</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-rest</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-mqtt</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-coap</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-websocket</artifactId>
+			<version>2.1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-dpws</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-soap</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-kernel</artifactId>
+			<version>${axis2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis2</groupId>
+			<artifactId>axis2-ant-plugin</artifactId>
+			<version>${axis2.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20090211</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gidl:GIDLModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gidl="http://eu.chorevolution/modelingnotations/gidl" hostAddress="http://jinx.viktoria.chalmers.se:3001/" protocol="REST">
+  <hasInterfaces role="provider">
+    <hasOperations name="bridgeNextClosure" type="two_way_sync" qos="reliable">
+      <hasScope name="bridgeNextClosure" verb="POST" uri="bridgeNextClosure"/>
+      <inputData name="request" context="body">
+		<hasDataType xsi:type="gidl:ComplexType" name="RequestRoot" occurences="one">
+        <hasDataType xsi:type="gidl:ComplexType" name="bridgeStatusInformationRequest" occurences="one">
+          <hasDataType xsi:type="gidl:ComplexType" name="origin" occurences="one">
+            <hasDataType xsi:type="gidl:SimpleType" name="lat" occurences="one" type="string"/>
+            <hasDataType xsi:type="gidl:SimpleType" name="lon" occurences="one" type="string"/>
+          </hasDataType>
+          <hasDataType xsi:type="gidl:ComplexType" name="destination" occurences="one">
+            <hasDataType xsi:type="gidl:SimpleType" name="lat" occurences="one" type="string"/>
+            <hasDataType xsi:type="gidl:SimpleType" name="lon" occurences="one" type="string"/>
+          </hasDataType>
+        </hasDataType>
+        </hasDataType>
+      </inputData>
+      <outputData name="response" context="body">
+		<hasDataType xsi:type="gidl:ComplexType" name="ResponseRoot" occurences="one">
+        <hasDataType xsi:type="gidl:ComplexType" name="bridgeStatusInformationResponse" occurences="one">
+          <hasDataType xsi:type="gidl:ComplexType" name="closureStatus" occurences="one">
+            <hasDataType xsi:type="gidl:SimpleType" name="isClosed" occurences="one" type="boolean"/>
+            <hasDataType xsi:type="gidl:SimpleType" name="opensAtTimeMillis" occurences="one" type="string"/>
+          </hasDataType>
+          <hasDataType xsi:type="gidl:ComplexType" name="nextClosure" occurences="one">
+            <hasDataType xsi:type="gidl:SimpleType" name="fromMillis" occurences="one" type="string"/>
+            <hasDataType xsi:type="gidl:SimpleType" name="toMillis" occurences="one" type="string"/>
+          </hasDataType>
+        </hasDataType>
+        </hasDataType>
+      </outputData>
+    </hasOperations>
+  </hasInterfaces>
+</gidl:GIDLModel>

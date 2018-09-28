@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gidl:GIDLModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gidl="http://eu.chorevolution/modelingnotations/gidl" hostAddress="127.0.0.1" protocol="CoAP">
+  <hasInterfaces role="provider">
+    <hasOperations name="temperature" type="one_way" qos="reliable">
+      <hasScope name="temperature" verb="GET" uri="temperature"/>
+     <inputData name="request" context="query" media="json">
+      <hasDataType xsi:type="gidl:ComplexType" name="inputDataType" minOccurs="one" maxOccurs="one">
+        <hasDataType xsi:type="gidl:SimpleType" name="lat" minOccurs="one" maxOccurs="one" type="double"/>
+        <hasDataType xsi:type="gidl:SimpleType" name="lon" minOccurs="one" maxOccurs="one" type="double"/>
+       </hasDataType>
+      </inputData>
+    </hasOperations>
+  </hasInterfaces>
+</gidl:GIDLModel>

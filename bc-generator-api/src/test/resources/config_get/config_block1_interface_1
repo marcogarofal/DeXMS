@@ -1,0 +1,1 @@
+{"subcomponent_port":"5906","subcomponent_address":"http:\/\/localhost","invocation_address":"http:\/\/srvwebri.softeco.it/","service_name":"BCTrafficverketRoadconditionSoapEndpoint","bc_manager_servlet_port":"2286","bc_rest_service_port":"8523","target_namespace":"eu.chorevolution.vsb.bindingcomponent.generated"}

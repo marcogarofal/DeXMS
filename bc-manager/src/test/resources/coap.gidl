@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gidl:GIDLModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gidl="http://eu.chorevolution/modelingnotations/gidl" hostAddress="http://jinx.viktoria.chalmers.se:3001/" protocol="CoAP">
+  <hasInterfaces role="provider">
+    <hasOperations name="bridgeNextClosure" type="one_way" qos="reliable">
+      <hasScope name="bridgeNextClosure" verb="POST" uri="bridgeNextClosure"/>
+      <inputData name="request" context="body">
+            <hasDataType xsi:type="gidl:SimpleType" name="lat" minOccurs="one" maxOccurs="one" type="string"/>
+            <hasDataType xsi:type="gidl:SimpleType" name="lon" minOccurs="one" maxOccurs="one" type="string"/>
+            <hasDataType xsi:type="gidl:SimpleType" name="temp" minOccurs="one" maxOccurs="one" type="string"/>
+      </inputData>
+    </hasOperations>
+  </hasInterfaces>
+</gidl:GIDLModel>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>eu.chorevolution.BCgenerator</groupId>
+    <artifactId>BCgenerator</artifactId>
+    <version>2.1.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>protocol-pool</artifactId>
+  <name>protocol-pool</name>
+  <packaging>pom</packaging>
+  <properties>
+		<BCgenerator.version>2.1.1-SNAPSHOT</BCgenerator.version>
+   </properties>
+  <modules>
+  	<module>gm-rest</module>
+  	<module>gm-soap</module>
+    <module>gm-mqtt</module>
+    <module>gm-coap</module>
+    <module>gm-dpws</module>
+    <module>gm-websocket</module>
+  </modules>
+  <dependencies>
+    <!-- Chorevolution -->
+    <dependency>
+	  <groupId>eu.chorevolution.BCgenerator</groupId>
+	  <artifactId>gmdl-utils</artifactId>
+	  <version>${BCgenerator.version}</version>
+    </dependency>
+  </dependencies>
+</project>

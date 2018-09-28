@@ -1,0 +1,11 @@
+&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+	&lt;gidl:GIDLModel xmlns:gidl="http://eu.chorevolution/modelingnotations/gidl" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" hostAddress="10.0.1.105" protocol="MQTT" xmi:version="2.0"&gt;
+		&lt;hasInterfaces role="consumer"&gt;
+			&lt;hasOperations name="droneImage" qos="unreliable" type="one_way"&gt;
+				&lt;hasScope name="droneImage" uri="droneImage" verb="GET"/&gt;
+				&lt;inputData context="body" media="json" name="request"&gt;
+					&lt;hasDataType maxOccurs="one" minOccurs="one" name="droneImage" type="string" xsi:type="gidl:SimpleType"/&gt;
+				&lt;/inputData&gt;
+			&lt;/hasOperations&gt;
+		&lt;/hasInterfaces&gt;
+	&lt;/gidl:GIDLModel&gt;

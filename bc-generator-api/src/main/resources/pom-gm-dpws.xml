@@ -1,0 +1,188 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>BcGenerator</groupId>
+	<artifactId>BcGenerator-dpws</artifactId>
+	<version>2.1.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.5</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<!-- REST library: Restlet -->
+		<repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.org</url>
+		</repository>
+
+		<!-- VSB library: eu.chorevolution.vsb <repository> <id>ow2-releases</id> 
+			<url>http://repository.ow2.org/nexus/content/repositories/releases/</url> 
+			<releases> <enabled>true</enabled> </releases> <snapshots> <enabled>true</enabled> 
+			</snapshots> </repository> -->
+
+
+		<repository>
+			<id>snapshots</id>
+			<name>http://maven.inria.fr-snapshots</name>
+			<url>http://maven.inria.fr/artifactory/zefxis-public-snapshot</url>
+		</repository>
+
+
+		<!-- VSB library: eu.chorevolution.vsb -->
+		<repository>
+			<id>ow2-nexus-snapshots</id>
+			<url>http://repository.ow2.org/nexus/content/repositories/snapshots/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+
+	</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.12.RELEASE</spring.version>
+		<cxf.version>3.2.1</cxf.version>
+		<jax.ws.rs>2.0.1</jax.ws.rs>
+		<axis2.version>1.7.5</axis2.version>
+		<axis2.stable.version>1.7.5</axis2.stable.version>
+	</properties>
+
+	<dependencies>
+
+
+		<!-- <dependency> <groupId>org.restlet.jse</groupId> <artifactId>org.restlet</artifactId> 
+			<version>2.3.1</version> </dependency> -->
+		<dependency>
+			<groupId>eu.chorevolution.vsb.org.ws4d.java</groupId>
+			<artifactId>ws4d-java-se-full-dpws-debug-with-security</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.vsb.org.ws4d.java</groupId>
+			<artifactId>ws4d-dpws-stack-se</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.vsb.org.ws4d.java</groupId>
+			<artifactId>ws4d-dpws-stack-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>service-parser</artifactId>
+			<version>2.1.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- Chorevolution -->
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gm-api</artifactId>
+			<version>2.1.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- CodeModel -->
+		<dependency>
+			<groupId>com.sun.codemodel</groupId>
+			<artifactId>codemodel</artifactId>
+			<version>2.6</version>
+		</dependency>
+
+		<!-- BCgenerator -->
+
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>artifact-generators</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>gmdl-utils</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>service-parser</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<artifactId>bc-manager</artifactId>
+			<version>${BCgenerator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160807</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+
+		<!-- <dependency> <groupId>com.sun.jersey</groupId> <artifactId>jersey-client</artifactId> 
+			<version>1.12</version> </dependency> <dependency> <groupId>org.glassfish.jersey.core</groupId> 
+			<artifactId>jersey-client</artifactId> <version>2.21</version> </dependency> 
+			<dependency> <groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-core</artifactId> 
+			<version>2.6.4</version> </dependency> <dependency> <groupId>com.fasterxml.jackson.core</groupId> 
+			<artifactId>jackson-databind</artifactId> <version>2.6.4</version> </dependency> 
+			<dependency> <groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-annotations</artifactId> 
+			<version>2.7.3</version> </dependency> <dependency> <groupId>com.sun.xml.bind</groupId> 
+			<artifactId>jaxb-jxc</artifactId> <version>2.2.11</version> </dependency> 
+			<dependency> <groupId>org.apache.axis2</groupId> <artifactId>axis2-kernel</artifactId> 
+			<version>${axis2.stable.version}</version> </dependency> <dependency> <groupId>org.apache.axis2</groupId> 
+			<artifactId>axis2-adb</artifactId> <version>${axis2.version}</version> </dependency> 
+			<dependency> <groupId>org.apache.axis2</groupId> <artifactId>axis2-transport-http</artifactId> 
+			<version>${axis2.version}</version> </dependency> <dependency> <groupId>org.apache.axis2</groupId> 
+			<artifactId>axis2-transport-local</artifactId> <version>${axis2.version}</version> 
+			</dependency> <dependency> <groupId>com.fasterxml.jackson.dataformat</groupId> 
+			<artifactId>jackson-dataformat-xml</artifactId> <version>2.6.2</version> 
+			</dependency> <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
+			<version>2.5</version> <scope>provided</scope> </dependency> <dependency> 
+			<groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-frontend-jaxws</artifactId> 
+			<version>${cxf.version}</version> </dependency> <dependency> <groupId>org.apache.cxf</groupId> 
+			<artifactId>cxf-rt-transports-http</artifactId> <version>${cxf.version}</version> 
+			</dependency> <dependency> <groupId>org.apache.cxf</groupId> <artifactId>cxf-rt-transports-http-jetty</artifactId> 
+			<version>${cxf.version}</version> </dependency> <dependency> <groupId>javax.ws.rs</groupId> 
+			<artifactId>javax.ws.rs-api</artifactId> <version>${jax.ws.rs}</version> 
+			</dependency> <dependency> <groupId>org.springframework</groupId> <artifactId>spring-context</artifactId> 
+			<version>${spring.version}</version> </dependency> <dependency> <groupId>org.springframework</groupId> 
+			<artifactId>spring-web</artifactId> <version>${spring.version}</version> 
+			</dependency> <dependency> <groupId>org.springframework</groupId> <artifactId>spring-webmvc</artifactId> 
+			<version>${spring.version}</version> </dependency> -->
+
+	</dependencies>
+
+</project>
+
