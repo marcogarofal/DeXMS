@@ -47,7 +47,7 @@ Add repository :
 Add dependency :
 
 <dependency>
-    <groupId>eu.chorevolution.BCgenerator</groupId>
+    <groupId>org.zefxis.dexms</groupId>
     <artifactId>BCgenerator-api</artifactId>
     <version>2.1.2</version>
 </dependency>

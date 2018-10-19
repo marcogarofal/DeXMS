@@ -1,0 +1,4 @@
+{
+  "service_name": "Mediator",
+  "target_namespace": "org.zefxis.dexms.mediator.generated"
+}

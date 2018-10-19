@@ -3,17 +3,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>eu.chorevolution.BCgenerator</groupId>
-		<artifactId>tools</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
-	</parent>
+	 <parent>
+    <groupId>org.zefxis.dexms</groupId>
+    <artifactId>tools</artifactId>
+    <version>2.1.1-SNAPSHOT</version>
+  </parent>
 	<artifactId>logger</artifactId>
 	<name>logger</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<BCgenerator.version>2.1.1-SNAPSHOT</BCgenerator.version>
+		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
 	</properties>
 	<dependencies>
 		<dependency>

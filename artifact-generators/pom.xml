@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>eu.chorevolution.BCgenerator</groupId>
-		<artifactId>BCgenerator</artifactId>
+		<groupId>org.zefxis.dexms</groupId>
+		<artifactId>DeXMS</artifactId>
 		<version>2.1.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>artifact-generators</artifactId>
@@ -25,44 +25,44 @@
 		<jax.ws.rs>2.0.1</jax.ws.rs>
 		<version.shrinkwrap>1.2.6</version.shrinkwrap>
 		<version.shrinkwrap.resolvers>3.0.0</version.shrinkwrap.resolvers>
-		<BCgenerator.version>2.1.1-SNAPSHOT</BCgenerator.version>
+		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
 	</properties>
 	<dependencies>
 		<!-- Chorevolution -->
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>gmdl-utils</artifactId>
-			<version>${BCgenerator.version}</version>
+			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
-			<artifactId>bc-manager</artifactId>
-			<version>${BCgenerator.version}</version>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>mediator-manager</artifactId>
+			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
-			<artifactId>gm-api</artifactId>
-			<version>${BCgenerator.version}</version>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-api</artifactId>
+			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
-			<artifactId>gm-dpws</artifactId>
-			<version>${BCgenerator.version}</version>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-dpws</artifactId>
+			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
-			<artifactId>gm-mqtt</artifactId>
-			<version>${BCgenerator.version}</version>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-mqtt</artifactId>
+			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
-			<artifactId>gm-websocket</artifactId>
-			<version>${BCgenerator.version}</version>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-websocket</artifactId>
+			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>eu.chorevolution.BCgenerator</groupId>
+			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>compiler</artifactId>
-			<version>${BCgenerator.version}</version>
+			<version>${DeXMS.version}</version>
 		</dependency>
 
 		<!-- RestLet -->
