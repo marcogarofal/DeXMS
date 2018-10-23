@@ -23,9 +23,6 @@ BCgenerator ensures interoperability of services and things developped in Java.
 
 To interconnect services and things, developer has to generate a middleware artifact that we call Mediator that ensures this interconnection :
 
-![Mediator](https://gitlab.inria.fr/pntumba/vsb-web-console/raw/master/vsbwebconsole/WebContent/css/images/BC.png)
-
-For instance based on the above figure, to generate the BC we need to follow this steps :
 
 *  Create a maven based project
 
@@ -47,21 +44,25 @@ Add repository :
 Add dependency :
 
 <dependency>
-    <groupId>org.zefxis.dexms</groupId>
-    <artifactId>MediatorGeneratorTest-api</artifactId>
-    <version>2.1.2</version>
+   <groupId>org.zefxis.dexms</groupId>
+	<artifactId>mediator-generator</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 	
 *  Generate Mediator as follow :
 
 ```
-VsbManager vsbm = new VsbManager();
-vsbm.setServiceEndpoint("HOST-IP_TEMPERATURE_SENSOR", "HOST-PORT_TEMPERATURE_SENSOR");
-vsbm.setBusEndpoint("HOST-IP_CLIENT","HOST-PORT_CLIENT");
-vsbm.generateWar(PATH_TO_GIDL, ProtocolType.REST, "REST_to_COAP");
+MediatorGenerator mediator = new MediatorGenerator();
+mediator.setServiceEndpoint("HOST-IP_TEMPERATURE_SENSOR", "HOST-PORT_TEMPERATURE_SENSOR");
+mediator.setBusEndpoint("HOST-IP_CLIENT","HOST-PORT_CLIENT");
+mediator.generateWar(PATH_TO_GIDL, ProtocolType.REST, "REST_to_COAP");
 ```
-After executing this lines of codes, the BC will be generated into the temporary folder of the system.
+After executing this lines of codes, the mediator will be generated into the temporary folder of the system, and  has the following name pattern : GeneratorFolderXXXXXXXXXX
+You can find that folder depending the operating system used : 
+- for  windows based operating system check in C:\users\username\AppData\Local\Temp
+- for linux based operating system check in /tmp/
+- 
 
 
 
