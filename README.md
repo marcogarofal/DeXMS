@@ -48,7 +48,7 @@ Add dependency :
 
 <dependency>
     <groupId>org.zefxis.dexms</groupId>
-    <artifactId>BCgenerator-api</artifactId>
+    <artifactId>MediatorGeneratorTest-api</artifactId>
     <version>2.1.2</version>
 </dependency>
 ```

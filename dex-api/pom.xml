@@ -4,13 +4,13 @@
 	<parent>
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>DeXMS</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>dex-api</artifactId>
 	<name>dex-api</name>
 	<description>gm-protocols provides generics interfaces which each concrete protocol implemention MUST implement</description>
 	<properties>
-		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
+		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
 	</properties>
 
 

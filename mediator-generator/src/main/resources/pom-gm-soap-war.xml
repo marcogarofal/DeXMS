@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>BcGenerator</groupId>
+	<groupId>MediatorGeneratorTest</groupId>
 	<artifactId>BcGenerator</artifactId>
-	<version>2.1.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -40,7 +40,9 @@
 			<url>http://maven.inria.fr/artifactory/zefxis-public-snapshot</url>
 		</repository>
 
-
+	
+		
+		
 		<repository>
 			<id>jWebSocket-Repo</id>
 			<name>jWebSocket Repository</name>
@@ -56,7 +58,8 @@
 		<jax.ws.rs>2.0.1</jax.ws.rs>
 		<axis2.version>1.7.5</axis2.version>
 		<axis2.stable.version>1.7.5</axis2.stable.version>
-		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
+		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
+		<dpws.version>1.0-SNAPSHOT</dpws.version>
 	</properties>
 
 	<dependencies>
@@ -80,17 +83,17 @@
 		<dependency>
 			<groupId>eu.chorevolution.vsb.org.ws4d.java</groupId>
 			<artifactId>ws4d-java-se-full-dpws-debug-with-security</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>${dpws.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.chorevolution.vsb.org.ws4d.java</groupId>
 			<artifactId>ws4d-dpws-stack-se</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>${dpws.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>eu.chorevolution.vsb.org.ws4d.java</groupId>
 			<artifactId>ws4d-dpws-stack-core</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>${dpws.version}</version>
 		</dependency>
 
 		<!-- CoAP library: californium -->

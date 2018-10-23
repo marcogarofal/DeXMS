@@ -5,13 +5,13 @@
 	<parent>
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>tools</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
 
 	<groupId>org.zefxis.dexms</groupId>
 	<artifactId>wsdl2gmdl</artifactId>
-	<version>2.1.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>wsdl2gmdl</name>

@@ -4,13 +4,13 @@
  <parent>
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>DeXMS</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
   <artifactId>protocol-pool</artifactId>
   <name>protocol-pool</name>
   <packaging>pom</packaging>
   <properties>
-		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
+		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
    </properties>
   <modules>
   	<module>dex-rest</module>

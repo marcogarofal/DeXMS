@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>DeXMS</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>tools</artifactId>
 	<name>tools</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
+		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>DeXMS</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>mediator-generator</artifactId>
 	<name>mediator-generator</name>
@@ -12,7 +12,7 @@
 	<description>Mediator Generator provides interface to generate a Mediator-Component WAR and JAR based on the description (GMDL) of the system (client, server, publisher, consumer etc.) to bind</description>
 
 	<properties>
-		<DeXMS.version>2.1.1-SNAPSHOT</DeXMS.version>
+		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
 	</properties>
 	
 	<repositories>

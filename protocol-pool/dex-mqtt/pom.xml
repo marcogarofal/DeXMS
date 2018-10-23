@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>protocol-pool</artifactId>
-		<version>2.1.1-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>dex-mqtt</artifactId>
 	<name>dex-mqtt</name>
@@ -52,12 +52,12 @@
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>gmdl-utils</artifactId>
-			<version>2.1.1-SNAPSHOT</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>dex-api</artifactId>
-			<version>2.1.1-SNAPSHOT</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<!-- CodeModel -->
 		<dependency>
