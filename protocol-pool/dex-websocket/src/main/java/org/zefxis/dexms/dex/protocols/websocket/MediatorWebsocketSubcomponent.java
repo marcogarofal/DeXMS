@@ -1,8 +1,11 @@
 package org.zefxis.dexms.dex.protocols.websocket;
 
+import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.SynchronousQueue;
 import org.json.simple.JSONObject;
 
@@ -17,24 +20,36 @@ import org.zefxis.dexms.gmdl.utils.enums.OperationType;
 import org.zefxis.dexms.tools.logger.GLog;
 import org.zefxis.dexms.tools.logger.Logger;
 
+import fr.inria.mimove.monitor.agent.MeasureAgent;
+import fr.inria.mimove.monitor.util.MonitorConstant;
+
 
 public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 	
 	private WebSocketServer webSocketServer = null;
 	private WebSocketObserver  webSocketObserver = null;
-	SynchronousQueue<String> buffer = null;
+	private BlockingQueue<List<Data<?>>> waitingQueue = null;
 	private GmServiceRepresentation serviceRepresentation = null;
+	private MeasureAgent agent = null;
 	
 	public MediatorWebsocketSubcomponent(MediatorConfiguration bcConfiguration,GmServiceRepresentation serviceRepresentation) {
 		
 		super(bcConfiguration);
 		// TODO Auto-generated constructor stub
 		
-		
+		System.out.println("MediatorWebsocketSubcomponent --> "+this.bcConfiguration.getSubcomponentRole());
+		agent = new MeasureAgent("timestamp_1",MonitorConstant.M1,MonitorConstant.PortTimestamp1);
 		this.serviceRepresentation = serviceRepresentation;
-		buffer = new SynchronousQueue<String>();
+		waitingQueue = new LinkedBlockingDeque<>();
 		switch (this.bcConfiguration.getSubcomponentRole()){
 		case SERVER:
+			
+			
+			webSocketServer = new WebSocketServer( new InetSocketAddress(bcConfiguration.getServicePort()));
+			
+			break;
+			
+		case CLIENT:   
 			
 			URI uri = null;
 			try {
@@ -47,11 +62,6 @@ public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 				e.printStackTrace();
 			}
 			
-			break;
-			
-		case CLIENT:   
-			
-//			webSocketServer = new WebSocketServer( new InetSocketAddress(bcConfiguration.getServicePort()));
 			
 			break;
 		default:
@@ -65,16 +75,22 @@ public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 		switch (this.bcConfiguration.getSubcomponentRole()){
 		case SERVER:
 			
-			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation);
-//			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation, agentMget);
-			Observerthread.start();
+			
+			webSocketServer.start();
+			WebSocketPushNotification notifier = new WebSocketPushNotification(webSocketServer, this, waitingQueue);
+//			WebSocketPushNotification notifier = new WebSocketPushNotification(webSocketServer, buffer, agentPost);
+			notifier.start();
+			
 			break;
 			
 		case CLIENT:   
-			webSocketServer.start();
-			WebSocketPushNotification notifier = new WebSocketPushNotification(webSocketServer, this, buffer);
-//			WebSocketPushNotification notifier = new WebSocketPushNotification(webSocketServer, buffer, agentPost);
-			notifier.start();
+
+			
+			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation, agent);
+//			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation, agentMget);
+			Observerthread.start();
+			
+			
 			break;
 		default:
 			break;
@@ -88,29 +104,12 @@ public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 	}
 
 	@Override
-	public void postOneway(String destination, Scope scope, List<Data<?>> data, long lease) {
+	public void postOneway(String destination, Scope scope, List<Data<?>> datas, long lease) {
 		// TODO Auto-generated method stub
 		
-			
-			JSONObject  jsonObject = new JSONObject();
-			for(Data<?> d : data) {
-				
-				// jsonObject.put(d.getName(), d.getObject().toString());
-				
-				try {
-				 // byte[] datainbyte = Base64.decodeBase64(d.getObject().toString());
-					
-			
-				//  byte[] messageInByte = Base64.decode(d.getObject().toString());
-					String message = d.getObject().toString();
-					buffer.put(message);
-				} catch (InterruptedException e){
-					
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}
+		
+		waitingQueue.add(datas);
+		
 			
 		
 	}

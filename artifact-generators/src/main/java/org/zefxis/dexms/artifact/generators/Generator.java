@@ -32,14 +32,14 @@ public class Generator {
 		 RunTimeCompiler compiler = new RunTimeCompiler(sourceFilesPath,Constants.generatedCodePath,classesOptions);
 		 compiler.compile();
 		 File sourceDir = new File(sourceFilesPath); 
-		 for(File f: sourceDir.listFiles()){
+		 /*for(File f: sourceDir.listFiles()){
 			 
 			 if(f.getName().endsWith("java")){
 				 
 				 f.delete();
 			 }
 			       
-		 }  
+		 } */ 
 		 PathResolver.setClassPath(Constants.generatedCodePath);
 		 if(this.busProtocol != ProtocolType.SOAP){
 				try {

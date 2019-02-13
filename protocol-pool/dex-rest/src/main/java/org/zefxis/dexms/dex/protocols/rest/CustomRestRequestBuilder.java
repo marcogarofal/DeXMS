@@ -1,10 +1,6 @@
 package org.zefxis.dexms.dex.protocols.rest;
-
-import java.io.ByteArrayInputStream;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

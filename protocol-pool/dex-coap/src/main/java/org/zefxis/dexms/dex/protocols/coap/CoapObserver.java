@@ -4,16 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapHandler;
@@ -45,7 +37,7 @@ public class CoapObserver implements Runnable {
 
 	public CoapObserver(MediatorGmSubcomponent bcGmSubcomponent, GmServiceRepresentation serviceRepresentation,
 			MediatorConfiguration bcConfiguration) {
-		
+
 		this.bcGmSubcomponent = (MediatorCoapSubcomponent) bcGmSubcomponent;
 		this.serviceRepresentation = serviceRepresentation;
 
@@ -56,13 +48,13 @@ public class CoapObserver implements Runnable {
 		}
 		coapUri = "coap://" + bcConfiguration.getSubcomponentAddress() + ":" + bcConfiguration.getSubcomponentPort()
 				+ "/" + op_name;
-		
+
 	}
 
 	public void run() {
-		
-		System.out.println("coapUri "+coapUri);
-		CoapClient client = new CoapClient(coapUri).useNONs();
+
+		System.out.println("coapUri " + coapUri);
+		CoapClient client = new CoapClient(coapUri).useCONs();
 		client = client.useExecutor();
 		CoapObserveRelation relation = client.observe(
 
@@ -89,36 +81,34 @@ public class CoapObserver implements Runnable {
 							e.printStackTrace();
 						}
 
+						List<Data<?>> datas = new ArrayList<>();
 
-							List<Data<?>> datas = new ArrayList<>();
+						for (Data<?> data : op.getGetDatas()) {
+							Data d = new Data<String>(data.getName(), "String", true,
+									String.valueOf(jsonObject.get(data.getName())), data.getContext(),
+									data.getMediaType());
+							datas.add(d);
+							context = data.getContext();
+							media = data.getMediaType();
+						}
 
-							for (Data<?> data : op.getGetDatas()) {
-								Data d = new Data<String>(data.getName(), "String", true,
-										String.valueOf(jsonObject.get(data.getName())), data.getContext(),
-										data.getMediaType());
-								datas.add(d);
-								context = data.getContext();
-								media = data.getMediaType();
-							}
-							
-							
-							if (!message_id.equals("")) {
-								
-								Data d = new Data<String>("op_name", "String", true, op_name, context, media);
-								datas.add(d);
-								
-								d = new Data<String>("message_id", "String", true, message_id, context, media);
-								datas.add(d);
-							}
+						if (!message_id.equals("")) {
 
-							if (op.getOperationType() == OperationType.TWO_WAY_SYNC) {
+							Data d = new Data<String>("op_name", "String", true, op_name, context, media);
+							datas.add(d);
 
-								bcGmSubcomponent.mgetTwowaySync(op.getScope(), datas);
-							} else if (op.getOperationType() == OperationType.ONE_WAY) {
+							d = new Data<String>("message_id", "String", true, message_id, context, media);
+							datas.add(d);
+						}
 
-								bcGmSubcomponent.mgetOneway(op.getScope(), datas);
-							}
-						
+						if (op.getOperationType() == OperationType.TWO_WAY_SYNC) {
+
+							bcGmSubcomponent.mgetTwowaySync(op.getScope(), datas);
+						} else if (op.getOperationType() == OperationType.ONE_WAY) {
+
+							bcGmSubcomponent.mgetOneway(op.getScope(), datas);
+						}
+
 					}
 
 					@Override
@@ -128,7 +118,10 @@ public class CoapObserver implements Runnable {
 				});
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		try {br.readLine();} catch (IOException e) {}
+		try {
+			br.readLine();
+		} catch (IOException e) {
+		}
 
 	}
 

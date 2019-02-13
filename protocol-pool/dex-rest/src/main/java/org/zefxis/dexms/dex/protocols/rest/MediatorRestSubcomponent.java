@@ -62,6 +62,8 @@ public class MediatorRestSubcomponent extends MediatorGmSubcomponent {
 	) {
 
 		super(bcConfiguration);
+		
+		System.out.println("MediatorRestSubcomponent --> "+this.bcConfiguration.getSubcomponentRole());
 		this.bcRestSubcomponent = this;
 		setGmServiceRepresentation(serviceRepresentation);
 		int restservicePort = Integer.valueOf(bcConfiguration.getServicePort());
@@ -181,7 +183,6 @@ public class MediatorRestSubcomponent extends MediatorGmSubcomponent {
 			public void run() {
 				// TODO Auto-generated method stub
 				
-				System.out.println(" bcConfiguration.getServiceAddress() "+bcConfiguration.getServiceAddress());
 				Request request = new Request();
 				request.setResourceRef(bcConfiguration.getServiceAddress());
 				request.setMethod(Method.POST);

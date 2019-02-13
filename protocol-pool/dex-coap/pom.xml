@@ -53,5 +53,20 @@
 			<artifactId>californium-osgi</artifactId>
 			<version>1.0.4</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.californium</groupId>
+			<artifactId>scandium</artifactId>
+			<version>1.0.3</version>
+			<type>jar</type>
+		</dependency>
+		<!-- Monitoring tool -->
+		<dependency>
+			<groupId>fr.inria.mimove.monitoring-tool</groupId>
+			<artifactId>monitoring-tool</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		
 	</dependencies>
 </project>

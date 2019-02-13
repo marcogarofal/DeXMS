@@ -1,4 +1,4 @@
-package org.zefxis.dexms.dex.protocols.websocket;
+ package org.zefxis.dexms.dex.protocols.websocket;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,21 +13,23 @@ import org.zefxis.dexms.gmdl.utils.Operation;
 import org.zefxis.dexms.gmdl.utils.Data;
 import org.zefxis.dexms.gmdl.utils.enums.OperationType;
 
+import fr.inria.mimove.monitor.agent.MeasureAgent;
+
 
 public class WebSocketObserverThread extends Thread {
 
 	WebSocketObserver webSocketObserver = null;
 	MediatorWebsocketSubcomponent bcWebsocketSubcomponent = null;
 	
-//	private MeasureAgent agent = null;
+    private MeasureAgent agent = null;
 	private GmServiceRepresentation serviceRepresentation = null;
 	
 	public WebSocketObserverThread(WebSocketObserver webSocketObserver, MediatorWebsocketSubcomponent bcWebsocketSubcomponent,
-			                       GmServiceRepresentation serviceRepresentation){
+			                       GmServiceRepresentation serviceRepresentation, MeasureAgent agent){
 		
 		this.webSocketObserver = webSocketObserver;
 		this.bcWebsocketSubcomponent = bcWebsocketSubcomponent;
-//		this.agent = agent;
+		this.agent = agent;
 		this.serviceRepresentation = serviceRepresentation;
 	}
 	
@@ -36,19 +38,19 @@ public class WebSocketObserverThread extends Thread {
 		webSocketObserver.connect();
 		while(true){
 			
-			String msg = null;
+			String message = null;
 			try{
 				
-				msg = webSocketObserver.msgQueue.take();
-				if(!msg.isEmpty()){
+				message = webSocketObserver.msgQueue.take();
+				if(!message.isEmpty()){
 					
-					String message_id = msg.split("-")[1];
-					String message = msg.split("-")[0];
-//					agent.fire(""+System.currentTimeMillis()+"-"+message_id);
+
+//					
 					JSONParser parser = new JSONParser();
-					JSONObject jsonObject = (JSONObject) parser.parse(message);
+					JSONObject jsonObject = (JSONObject) parser.parse(message.trim());
 				
 					String op_name = (String) jsonObject.get("op_name");
+					String message_id = (String) jsonObject.get("message_id");
 					for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations()
 							.entrySet()) {
 						if (en.getKey().equals(op_name)){
@@ -60,19 +62,18 @@ public class WebSocketObserverThread extends Thread {
 								Data d = new Data<String>(data.getName(), "String", true,
 										(String) jsonObject.get(data.getName()), data.getContext(),data.getMediaType());
 								datas.add(d);
-//								System.err.println("Added " + d);
 							}
 							Data d = new Data<String>("op_name", "String", true, op_name, "BODY");
 							datas.add(d);
-							d = new Data<String>("message_id", "String", true,message_id, "BODY");
-							datas.add(d);
 							String scope = op_name;
 							if (op.getOperationType() == OperationType.TWO_WAY_SYNC) {
-
+								
+								
 								String response = bcWebsocketSubcomponent.mgetTwowaySync(op.getScope(), datas);
 
 							} else if (op.getOperationType() == OperationType.ONE_WAY) {
 								
+								agent.fire2(System.nanoTime(), message_id+"-timestamp_1-mgetOneway");
 								bcWebsocketSubcomponent.mgetOneway(op.getScope(), datas);
 							}
 						}

@@ -19,7 +19,7 @@ import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 import org.zefxis.dexms.dex.protocols.Manageable;
-import org.zefxis.dexms.mediator.generated.Mediator;
+//import org.zefxis.dexms.mediator.generated.Mediator;
 
 
 public class MediatorManagerRestService implements Manageable {
@@ -29,7 +29,7 @@ public class MediatorManagerRestService implements Manageable {
 	private Boolean serverOnline = false;
 	private Boolean bcStarted = false;
 	
-	Mediator bc = new Mediator();
+	// Mediator bc = new Mediator();
 
 	public MediatorManagerRestService(final int port){
 		
@@ -68,7 +68,7 @@ public class MediatorManagerRestService implements Manageable {
 		
 		if(!isBcSarted()){
 			
-			bc.run();
+			// bc.run();
 			setBcSarted(true);
 			
 		}else{
@@ -82,7 +82,7 @@ public class MediatorManagerRestService implements Manageable {
 		
 		if(isBcSarted()){
 			
-			bc.pause();
+			// bc.pause();
 			setBcSarted(false);
 			
 		}else{
