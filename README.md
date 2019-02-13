@@ -4,7 +4,7 @@ Data eXchange Mediator Synthesizer  (DeXMS) is a development and execution envir
 
 These applications are open and dynamic choreographies of extremely heterogeneous objects and services, including lightweight integrated systems (such as sensors, actuators and networks of the latter), mobile systems (such as smartphone applications), and systems resource-rich computing (such as systems hosted on corporate servers and cloud infrastructures).
 
-The goal of VSB is to allow developper to  perfectly interconnect services and things within choreography that use heterogeneous interaction protocols at the middleware layer, such as SOAP Web Services, REST Web Services, or things using CoAP, MQTT. So far the VSB supports following protocols : 
+The goal of DeXMS is to allow developper to  perfectly interconnect services and things within choreography that use heterogeneous interaction protocols at the middleware layer, such as SOAP Web Services, REST Web Services, or things using CoAP, MQTT. So far the DeXMS supports following protocols : 
 
 *  SOAP
 *  REST
@@ -13,11 +13,10 @@ The goal of VSB is to allow developper to  perfectly interconnect services and t
 *  Websocket
 *  DPWS
 
-In addition,  the BCgenerator provides a monitoring API for this interconnected services and things.
 
 **2. Requirements**
 
-BCgenerator ensures interoperability of services and things developped in Java. 
+DeXMS ensures interoperability of services and things developped in Java. 
 
 **3.  Inteconnecting services and things**
 
