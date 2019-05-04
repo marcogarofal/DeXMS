@@ -16,7 +16,7 @@ The goal of DeXMS is to allow developper to  perfectly interconnect services and
 
 **2. Requirements**
 
-DeXMS ensures interoperability of services and things developped in Java. 
+DeXMS developped in Java it is sucessfully tested on Linux based operating system.
 
 **3.  Inteconnecting services and things**
 
