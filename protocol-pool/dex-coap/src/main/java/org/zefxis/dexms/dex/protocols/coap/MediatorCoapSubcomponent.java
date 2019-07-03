@@ -25,7 +25,7 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 	private CoapObservableServer server;
 	private CoapObserver observer = null;
 	private Thread observerThread = null;
-	private BlockingQueue<List<Data<?>>> waitingQueue = new LinkedBlockingDeque<>();
+	private BlockingQueue<String> waitingQueue = new LinkedBlockingDeque<>();
 	
 	private MeasureAgent agent = null;
 	
@@ -36,9 +36,8 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 		switch (this.bcConfiguration.getSubcomponentRole()) {
 		case SERVER:
 		
-			
 			this.serviceRepresentation = serviceRepresentation;
-			server = new CoapObservableServer(serviceRepresentation, this.bcConfiguration.getServiceAddress(), this.bcConfiguration.getSubcomponentPort(), waitingQueue, agent);
+			server = new CoapObservableServer(serviceRepresentation, this.bcConfiguration.getServiceAddress(), this.bcConfiguration.getSubcomponentPort(), waitingQueue);
 			
 			
 			break;
@@ -101,7 +100,17 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 	@Override
 	public void postOneway(final String destination, final Scope scope, final List<Data<?>> datas, final long lease) {
 		
-		waitingQueue.add(datas);
+		JSONObject jsonObject = new JSONObject();
+
+		for (Data<?> data : datas) {
+
+			jsonObject.put(data.getName(), String.valueOf(data.getObject()));
+
+		}
+		String message_id = (String) jsonObject.get("message_id");
+		String datasStream = jsonObject.toJSONString();
+		agent.fire2(System.nanoTime(), message_id + "-timestamp_2-postOneway");
+		waitingQueue.add(datasStream);
 		 
 	}
 

@@ -18,12 +18,12 @@ import org.zefxis.dexms.tools.logger.GLog;
 
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
-public class MediatorMQTTSubcriberCallback implements MqttCallback {
+public class MediatorMQTTSubscriberCallback implements MqttCallback {
 
 	private MediatorMQTTSubcomponent mediatorMQTTSubComponent = null;
 	private GmServiceRepresentation serviceRepresentation = null;
 
-	public MediatorMQTTSubcriberCallback(MediatorMQTTSubcomponent mediatorMQTTSubComponent,
+	public MediatorMQTTSubscriberCallback(MediatorMQTTSubcomponent mediatorMQTTSubComponent,
 			GmServiceRepresentation serviceRepresentation) {
 		super();
 

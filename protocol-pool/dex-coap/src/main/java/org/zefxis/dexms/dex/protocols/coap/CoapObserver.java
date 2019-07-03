@@ -67,11 +67,15 @@ public class CoapObserver implements Runnable {
 						String receivedText = response.getResponseText();
 						String message_id = "";
 						String message = receivedText;
-						if (receivedText.split("-").length > 1) {
+						if(receivedText.contains("-")) {
+							
+							if (receivedText.split("-").length > 1) {
 
-							message_id = receivedText.split("-")[1];
-							message = receivedText.split("-")[0];
+								message_id = receivedText.split("-")[1];
+								message = receivedText.split("-")[0];
+							}
 						}
+						
 						JSONParser parser = new JSONParser();
 						JSONObject jsonObject = null;
 

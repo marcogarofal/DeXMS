@@ -21,27 +21,27 @@ public class CoapObservableServer extends Thread {
 
 	private static CoapObservableResource coapObservableResource = null;
 	private CoapServer coapServer = null;
-	private BlockingQueue<List<Data<?>>> waitingQueue = null;
+	private BlockingQueue<String> waitingQueue = null;
 	private String resourceName = null;
 	private String hostIp = null;
 	private int hostport = 0;
 	private NetworkConfig config = null;
-	private MeasureAgent agent = null;
-	
+
 	public CoapObservableServer(GmServiceRepresentation serviceRepresentation, String hostIp, int hostport,
-			BlockingQueue<List<Data<?>>> waitingQueue, MeasureAgent agent) {
-		
-		this.agent = agent;
+			BlockingQueue<String> waitingQueue) {
+
 		this.waitingQueue = waitingQueue;
 		this.hostIp = hostIp;
 		this.hostport = hostport;
-		
+
 		this.config = NetworkConfig.getStandard().setInt(NetworkConfig.Keys.PROTOCOL_STAGE_THREAD_COUNT, 100);
 
 		for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations().entrySet()) {
 
 			this.resourceName = en.getKey();
 		}
+
+		
 
 	}
 
@@ -60,9 +60,10 @@ public class CoapObservableServer extends Thread {
 		} catch (SocketException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			
 		}
 
-		coapObservableResource = new CoapObservableResource(resourceName, true, waitingQueue, agent);
+		coapObservableResource = new CoapObservableResource(resourceName, true, waitingQueue);
 		coapServer.add(coapObservableResource);
 
 		coapServer.start();
@@ -70,14 +71,12 @@ public class CoapObservableServer extends Thread {
 		while (true) {
 
 			coapObservableResource.resourceChange();
-			/*try {
-
-				Thread.sleep(100);
-
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}*/
-
+			try {
+				
+				Thread.sleep(2000);
+			} catch(Exception e) {}
+			
+			
 		}
 
 	}

@@ -46,7 +46,7 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 			} catch (MqttException e1) {
 				e1.printStackTrace();
 			}
-			serverSubscriber.setCallback(new MediatorMQTTSubcriberCallback(this, serviceRepresentation));
+			serverSubscriber.setCallback(new MediatorMQTTSubscriberCallback(this, serviceRepresentation));
 			try {
 				serverPublisher = new MqttClient("tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
 						+ this.bcConfiguration.getSubcomponentPort(), "serverPublisher");
@@ -65,7 +65,7 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 
 				e.printStackTrace();
 			}
-			client.setCallback(new MediatorMQTTSubcriberCallback(this, serviceRepresentation));
+			client.setCallback(new MediatorMQTTSubscriberCallback(this, serviceRepresentation));
 			break;
 		default:
 			break;
@@ -172,7 +172,8 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 	@Override
 	public void postOneway(final String destination, final Scope scope, final List<Data<?>> datas, final long lease) {
 		// TODO Auto-generated method stub
-
+		
+	
 		MqttMessage message = new MqttMessage();
 		message.setQos(0);
 		JSONObject jsonObject = new JSONObject();
