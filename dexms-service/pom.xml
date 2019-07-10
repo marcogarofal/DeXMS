@@ -8,13 +8,13 @@
 		<artifactId>DeXMS</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>mediator-generator-service</artifactId>
+	<artifactId>dexms-service</artifactId>
 	<packaging>war</packaging>
-	<name>mediator-generator-service Webapp</name>
+	<name>DeXMS Service Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<contextpath>mediator-generator-service</contextpath>
+		<contextpath>dexms-service</contextpath>
 		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
 	</properties>
 	<repositories>
@@ -32,7 +32,7 @@
 				<configuration>
 					<url>http://localhost:8080/manager/text</url>
 					<server>TomcatServer</server>
-					<path>/MediatorGeneratorService</path>
+					<path>/DexmsService</path>
 					<username>admin</username>
 					<password>admin</password>
 				</configuration>

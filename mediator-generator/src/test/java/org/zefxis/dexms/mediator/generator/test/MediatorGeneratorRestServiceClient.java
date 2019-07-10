@@ -16,16 +16,19 @@ public static void main(String[] args){
 		
 		// TODO Auto-generated method stub
 	
-	
-	
 
 		String interfaceDescriptionPath = "/home/pntumba/inria_code/repositories/zefxis/experiments/stress-testing/DeXIDL/temperature.gidl";
 		byte[] byteArray = readBytesFromFile(interfaceDescriptionPath);
 		
-		MediatorManagerClient client = new MediatorManagerClient("127.0.0.1", 8080);
-		MediatorOutput vsbOutput = client.generateBindingComponent(byteArray, "REST", "ServiceTest");
-		System.out.println("vsbOutput.war.length "+vsbOutput.war.length);
-		System.out.println("vsbOutput.wsdl.length "+vsbOutput.wsdl.length);
+		MediatorManagerClient client = new MediatorManagerClient("127.0.0.1", 8080,"status");
+		System.out.println(" Status  "+client.getStatus());
+		
+		
+		
+	
+		/*MediatorOutput mediatorOutput = client.generateMediator(byteArray, "COAP", "MQTT_to_COAP");
+		
+		System.out.println("mediatorOutput.war.length "+mediatorOutput.war.length);*/
 	}
 
 	private static byte[] readBytesFromFile(String filePath){

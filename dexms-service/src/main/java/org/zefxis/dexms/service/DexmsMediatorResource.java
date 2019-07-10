@@ -1,11 +1,14 @@
-package eu.chorevolution.vsb.managerservice;
+package org.zefxis.dexms.service;
 
 import java.io.IOException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.restlet.data.MediaType;
 import org.restlet.representation.ObjectRepresentation;
 import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
+import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
@@ -13,15 +16,18 @@ import org.zefxis.dexms.gmdl.utils.enums.ProtocolType;
 import org.zefxis.dexms.mediator.generator.MediatorGenerator;
 import org.zefxis.dexms.mediator.manager.MediatorOutput;
 
-public class MediatorGeneratorResource extends ServerResource {
+public class DexmsMediatorResource extends ServerResource {
 
-	public MediatorGeneratorResource() {
+	public DexmsMediatorResource(){
+		
+		
 	}
-
+	
+	
 	@Post
-	public Representation generateBindingComponent(Representation entity) throws ResourceException {
+	public Representation generateMediator(Representation entity) throws ResourceException {
 		String receivedText = null;
-		try {
+		try{
 
 			receivedText = entity.getText();
 
@@ -90,9 +96,9 @@ public class MediatorGeneratorResource extends ServerResource {
 
 		if (busProtocol == null) {
 
-			return null;
+			MediatorOutput mediatorOutput = new MediatorOutput();
+			return new ObjectRepresentation<MediatorOutput>(mediatorOutput);
 		}
-
 		MediatorGenerator mediator = new MediatorGenerator();
 		MediatorOutput mediatorOutput = mediator.generateWar(byteArray, busProtocol, service_name);
 		return new ObjectRepresentation<MediatorOutput>(mediatorOutput);

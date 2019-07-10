@@ -15,10 +15,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <web-app>
-	<display-name>Binding Component Generator REST API</display-name>
+	<display-name>DeXMS Service</display-name>
     <context-param>
 		<param-name>org.restlet.application</param-name>
-		<param-value>eu.chorevolution.vsb.managerservice.VsbManagerServer</param-value>
+		<param-value>org.zefxis.dexms.service.DexmsService</param-value>
 	</context-param>
 	<servlet>
 		<servlet-name>RestletServlet</servlet-name>
@@ -26,7 +26,7 @@ limitations under the License.
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>RestletServlet</servlet-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/dexms/*</url-pattern>
 	</servlet-mapping>
 	<max-file-size>82914560</max-file-size>
     <max-request-size>82914560</max-request-size>

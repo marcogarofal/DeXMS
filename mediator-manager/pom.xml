@@ -8,8 +8,6 @@
 	</parent>
 	<artifactId>mediator-manager</artifactId>
 	<name>mediator-manager</name>
-	<description>bc-manager exposes a REST interface to configure, start and stop a deployed Binding Component</description>
-	
 	<properties>
 		<axis2.version>1.7.5</axis2.version>
 		<axis2.stable.version>1.7.5</axis2.stable.version>

@@ -1,12 +1,12 @@
-package eu.chorevolution.vsb.managerservice;
+package org.zefxis.dexms.service;
 
 import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.routing.Router;
 
-public class MediatorGeneratorService extends Application {
+public class DexmsService extends Application {
 
-	public MediatorGeneratorService() {
+	public DexmsService() {
 	}
 
 	@Override
@@ -16,7 +16,8 @@ public class MediatorGeneratorService extends Application {
 
 		Router router = new Router(getContext());
 		// Defines only one route with a new instance of MediatorGeneratorResource.
-		router.attach("/MediatorGenerator", MediatorGeneratorResource.class);
+		router.attach("/mediator", DexmsMediatorResource.class);
+		router.attach("/status", DexmsStatusResource.class);
 		return router;
 	}
 
