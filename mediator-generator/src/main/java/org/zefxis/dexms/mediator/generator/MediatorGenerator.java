@@ -70,7 +70,7 @@ public class MediatorGenerator{
 	private Logger logger = GLog.initLogger();
 	private static HashMap<String, String> mapParameter = new HashMap<String, String>();
 
-	public MediatorGenerator() {
+	public MediatorGenerator(){
 
 		// Test if class is running from jar file or from classes files.
 		if (getClass().getClassLoader().getResource("config.json").toString().startsWith("jar")){
@@ -84,7 +84,33 @@ public class MediatorGenerator{
 	 ***********************************************/
 
 	/**
-	 * Returns VsbOutput object which contains the generated 1 byte array of
+	 * Returns MediatorOutput object which contains the generated 1 byte array of
+	 * archive jar and 1 array bytes of wsdl file
+	 * <p>
+	 *
+	 * @param interfaceDescriptionPath
+	 *            string path of a gidl or gmdl file
+	 * @param busProtocol
+	 *            the protocole type to use (SOAP, REST, ...)
+	 * @param service_name
+	 *            the name of the service will be generated
+	 * @return VsbOutput object
+	 */
+
+	public MediatorOutput generate(String interfaceDescriptionPath, ProtocolType busProtocol, String service_name) {
+
+		service_name = deleteSpecialChar(service_name);
+		Constants.service_name = service_name;
+		MediatorOutput vsbOutput = generate(interfaceDescriptionPath, busProtocol);
+		return vsbOutput;
+	}
+	
+	/**********************************************
+	 * Public method to call
+	 ***********************************************/
+
+	/**
+	 * Returns MediatorOutput object which contains the generated 1 byte array of
 	 * archive war and 1 array bytes of wsdl file
 	 * <p>
 	 *
@@ -99,10 +125,7 @@ public class MediatorGenerator{
 
 	public MediatorOutput generateWar(String interfaceDescriptionPath, ProtocolType busProtocol, String service_name) {
 
-		service_name = deleteSpecialChar(service_name);
-		Constants.service_name = service_name;
-		MediatorOutput vsbOutput = generate(interfaceDescriptionPath, busProtocol);
-		return vsbOutput;
+		return generate(interfaceDescriptionPath,busProtocol, service_name);
 	}
 
 	/**

@@ -27,12 +27,8 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 	private Thread observerThread = null;
 	private BlockingQueue<String> waitingQueue = new LinkedBlockingDeque<>();
 	
-	private MeasureAgent agent = null;
-	
 	public MediatorCoapSubcomponent(MediatorConfiguration bcConfiguration, GmServiceRepresentation serviceRepresentation) {
 		super(bcConfiguration);
-		agent = new MeasureAgent("timestamp_2",MonitorConstant.M1,MonitorConstant.PortTimestamp2);
-		System.out.println("MediatorCoapSubcomponent --> "+this.bcConfiguration.getSubcomponentRole());
 		switch (this.bcConfiguration.getSubcomponentRole()) {
 		case SERVER:
 		
@@ -107,9 +103,12 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 			jsonObject.put(data.getName(), String.valueOf(data.getObject()));
 
 		}
-		String message_id = (String) jsonObject.get("message_id");
+		if(jsonObject.containsKey("message_id")) {
+			
+			String message_id = (String) jsonObject.get("message_id");
+		}
+		
 		String datasStream = jsonObject.toJSONString();
-		agent.fire2(System.nanoTime(), message_id + "-timestamp_2-postOneway");
 		waitingQueue.add(datasStream);
 		 
 	}

@@ -87,6 +87,7 @@
 		<module>mediator-manager</module>
 		<module>tools</module>
 		<module>mediator-generator</module>
+		<module>mediator-generator-service</module>
 	</modules>
 	<build>
 		<plugins>

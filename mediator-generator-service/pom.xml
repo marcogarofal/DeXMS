@@ -10,11 +10,11 @@
 	</parent>
 	<artifactId>mediator-generator-service</artifactId>
 	<packaging>war</packaging>
-	<name>bc-generator-service Webapp</name>
+	<name>mediator-generator-service Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<contextpath>BCgenerator-service</contextpath>
+		<contextpath>mediator-generator-service</contextpath>
 		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
 	</properties>
 	<repositories>
@@ -32,7 +32,7 @@
 				<configuration>
 					<url>http://localhost:8080/manager/text</url>
 					<server>TomcatServer</server>
-					<path>/vsbmanager-service</path>
+					<path>/MediatorGeneratorService</path>
 					<username>admin</username>
 					<password>admin</password>
 				</configuration>
@@ -43,7 +43,7 @@
 				<version>3.2.0</version>
 				<configuration>
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
-				</configuration>
+			</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -56,9 +56,8 @@
     </dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
-			<artifactId>MediatorGeneratorTest-api</artifactId>
+			<artifactId>mediator-generator</artifactId>
 			<version>${DeXMS.version}</version>
-			<!-- <classifier>jar-with-dependencies</classifier> -->
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

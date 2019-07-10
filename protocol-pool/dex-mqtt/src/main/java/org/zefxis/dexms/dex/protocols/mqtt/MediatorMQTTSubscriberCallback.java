@@ -14,9 +14,7 @@ import org.zefxis.dexms.gmdl.utils.Data;
 import org.zefxis.dexms.gmdl.utils.GmServiceRepresentation;
 import org.zefxis.dexms.gmdl.utils.Operation;
 import org.zefxis.dexms.gmdl.utils.enums.OperationType;
-import org.zefxis.dexms.tools.logger.GLog;
 
-import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 public class MediatorMQTTSubscriberCallback implements MqttCallback {
 
@@ -34,38 +32,18 @@ public class MediatorMQTTSubscriberCallback implements MqttCallback {
 	@Override
 	public void messageArrived(String topic, MqttMessage msg) throws Exception {
 
-		String receivedText = Base64.encode(msg.getPayload());
+		
+		String receivedText = new String(msg.getPayload());
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = null;
-
+		
 		try {
 
 			jsonObject = (JSONObject) parser.parse(receivedText);
 
 		} catch (ParseException e) {
 
-			GLog.log.e("Error", e.getMessage());
-		}
-
-		finally {
-
-			for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations()
-					.entrySet()) {
-				if (en.getKey().equals(topic)) {
-					Operation op = en.getValue();
-					List<Data<?>> datas = new ArrayList<>();
-
-					for (Data<?> data : op.getGetDatas()) {
-
-						jsonObject = new JSONObject();
-						jsonObject.put(data.getName(), receivedText);
-
-					}
-
-				}
-
-			}
-
+			System.err.println(e.getMessage());
 		}
 
 		for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations().entrySet()) {

@@ -15,7 +15,11 @@ public class MediatorGeneratorRestServiceClient{
 public static void main(String[] args){
 		
 		// TODO Auto-generated method stub
-		String interfaceDescriptionPath = "/home/pntumba/inria_code/repositories/evolution-service-bus/bc-manager/src/main/resources/coap.gidl";
+	
+	
+	
+
+		String interfaceDescriptionPath = "/home/pntumba/inria_code/repositories/zefxis/experiments/stress-testing/DeXIDL/temperature.gidl";
 		byte[] byteArray = readBytesFromFile(interfaceDescriptionPath);
 		
 		MediatorManagerClient client = new MediatorManagerClient("127.0.0.1", 8080);

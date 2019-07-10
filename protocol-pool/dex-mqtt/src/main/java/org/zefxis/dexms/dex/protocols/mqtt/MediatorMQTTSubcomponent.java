@@ -33,7 +33,7 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 
 	
 		this.serviceRepresentation = serviceRepresentation;
-		System.out.println("tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
+		System.out.println("MQTT "+ this.bcConfiguration.getSubcomponentRole()+" tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
 				+ this.bcConfiguration.getSubcomponentPort());
 		switch (this.bcConfiguration.getSubcomponentRole()) {
 		case SERVER:
@@ -66,6 +66,7 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 				e.printStackTrace();
 			}
 			client.setCallback(new MediatorMQTTSubscriberCallback(this, serviceRepresentation));
+			
 			break;
 		default:
 			break;
@@ -124,12 +125,36 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 			}
 			break;
 		case CLIENT:
+			
+			System.out.println(" Starting client");
 			MqttConnectOptions options = new MqttConnectOptions();
 			options.setCleanSession(false);
 
 			try {
 
 				client.connect(options);
+				System.out.println(" ServiceRepresentation  "+serviceRepresentation.getInterfaces().get(0).getOperations()
+						.entrySet().size());
+				
+				for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations()
+						.entrySet()) {
+					try {
+						
+						
+						client.subscribe((String) en.getKey());
+						if(client.isConnected()){
+							
+							System.out.println(client.getClientId()+"subribes topic "+(String) en.getKey());
+							
+						}else{
+							
+							System.out.println("Not connected");
+						}
+					} catch (MqttException e) {
+						e.printStackTrace();
+					}
+					
+				}
 
 			} catch (MqttException e) {
 
