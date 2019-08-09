@@ -1,0 +1,13 @@
+services:
+
+image: ubuntu:16.04
+
+stages:
+  - test
+
+job_test_ci:
+  stage: test
+  tags:
+    - test
+  script:
+    - pwd
