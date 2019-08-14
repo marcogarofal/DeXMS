@@ -1,13 +1,43 @@
 services:
 
-image: ubuntu:16.04
+# this yaml uses an ubuntu 16.04 imges with maven/java/tomcat preinstalled 
+# (check dependencies install part of the Dockerfile)
+image: ubuntu_dexms:1.0
 
 stages:
+  - install
+  - build
   - test
+  - deploy
+  - start
+
+job_install_ci:
+  stage: install
+  tags:
+    - test
+  script:
+    - pwd
+    - ls
+
+job_build_ci:
+  stage: build
+  tags:
+    - test
+  script:
+    - cd DeXMS
+    - source /etc/environment && mvn clean verify
+    - source /etc/environment && mvn install
+  artifacts:
+    paths:
+    - backend/node_modules/
+    - frontend/node_modules/
 
 job_test_ci:
   stage: test
   tags:
     - test
   script:
-    - pwd
+    - cd DeXMS
+    - source /etc/environment && mvn test
+
+
