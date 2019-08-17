@@ -35,7 +35,6 @@ job_test_ci:
   tags:
     - test
   script:
-    - cd DeXMS
     - source /etc/environment && mvn test
     - cp dexms-service/target/dexms-service-1.0.0-SNAPSHOT.war /usr/local/apache-tomcat-8.5.42/webapps/
     - /usr/local/apache-tomcat-8.5.42/bin/shartup.sh
