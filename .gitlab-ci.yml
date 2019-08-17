@@ -24,7 +24,6 @@ job_build_ci:
   tags:
     - test
   script:
-    - cd DeXMS
     - source /etc/environment && mvn clean verify
     - source /etc/environment && mvn install
   artifacts:
