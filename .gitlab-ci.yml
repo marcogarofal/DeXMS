@@ -28,8 +28,7 @@ job_build_ci:
     - source /etc/environment && mvn install
   artifacts:
     paths:
-    - backend/node_modules/
-    - frontend/node_modules/
+    - dexms-service/target/
 
 job_test_ci:
   stage: test
@@ -38,5 +37,13 @@ job_test_ci:
   script:
     - cd DeXMS
     - source /etc/environment && mvn test
-
+    - cp dexms-service/target/dexms-service-1.0.0-SNAPSHOT.war /usr/local/apache-tomcat-8.5.42/webapps/
+    - /usr/local/apache-tomcat-8.5.42/bin/shartup.sh
+    - sleep 10
+    - wget http://localhost/dexms-service-1.0.0-SNAPSHOT/
+  artifacts:
+    paths:
+    - dexms-service/target/
+    
+    
 
