@@ -41,7 +41,7 @@
 
  # install tomcat
 
- RUN wget http://mirror.ibcp.fr/pub/apache/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.zip
+ RUN wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.42/bin/apache-tomcat-8.5.42.zip
  RUN unzip apache-tomcat-8.5.42.zip 
  RUN cp -rf apache-tomcat-8.5.42 /usr/local/ 
  RUN rm -rf apache-tomcat-8.5.42  apache-tomcat-8.5.42.zip
