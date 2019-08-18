@@ -41,7 +41,7 @@ job_test_ci:
     - cp dexms-service/target/dexms-service-1.0.0-SNAPSHOT.war /usr/local/apache-tomcat-8.5.42/webapps/
     - sleep 10
     - ls /usr/local/apache-tomcat-8.5.42/webapps
-    - ls /usr/local/apache-tomcat-8.5.42/webapp/dexms-service-1.0.0-SNAPSHOT/
+    - ls /usr/local/apache-tomcat-8.5.42/webapps/dexms-service-1.0.0-SNAPSHOT/
     - wget http://localhost:8080/dexms-service-1.0.0-SNAPSHOT/
   artifacts:
     paths:
