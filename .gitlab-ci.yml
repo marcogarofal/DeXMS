@@ -2,7 +2,7 @@ services:
 
 # this yaml uses an ubuntu 16.04 imges with maven/java/tomcat preinstalled 
 # (check dependencies install part of the Dockerfile)
-image: ubuntu_dexms:1.0
+image: ubuntu_dexms:1.1
 
 stages:
   - install
@@ -29,6 +29,13 @@ job_build_ci:
   artifacts:
     paths:
     - dexms-service/target/
+
+job_docker_ci:
+  stage: test
+  tags:
+    - test
+  script:
+    - source /etc/environment && docker build .
 
 job_test_ci:
   stage: test
