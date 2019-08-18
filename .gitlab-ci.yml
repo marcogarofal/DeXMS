@@ -36,9 +36,12 @@ job_test_ci:
     - test
   script:
     - source /etc/environment && mvn test
-    - cp dexms-service/target/dexms-service-1.0.0-SNAPSHOT.war /usr/local/apache-tomcat-8.5.42/webapps/
     - /usr/local/apache-tomcat-8.5.42/bin/startup.sh
     - sleep 10
+    - cp dexms-service/target/dexms-service-1.0.0-SNAPSHOT.war /usr/local/apache-tomcat-8.5.42/webapps/
+    - sleep 10
+    - le /usr/local/apache-tomcat-8.5.42/webapps
+    - le /usr/local/apache-tomcat-8.5.42/webapp/dexms-service-1.0.0-SNAPSHOT/
     - wget http://localhost:8080/dexms-service-1.0.0-SNAPSHOT/
   artifacts:
     paths:
