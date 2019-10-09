@@ -20,15 +20,15 @@ public static void main(String[] args){
 		String interfaceDescriptionPath = "/home/pntumba/inria_code/repositories/zefxis/experiments/stress-testing/DeXIDL/temperature.gidl";
 		byte[] byteArray = readBytesFromFile(interfaceDescriptionPath);
 		
-		MediatorManagerClient client = new MediatorManagerClient("127.0.0.1", 8080,"status");
-		System.out.println(" Status  "+client.getStatus());
+		MediatorManagerClient client = new MediatorManagerClient("127.0.0.1", 8080,"mediator");
+		//System.out.println(" Status  "+client.getStatus());
 		
 		
 		
 	
-		/*MediatorOutput mediatorOutput = client.generateMediator(byteArray, "COAP", "MQTT_to_COAP");
+		MediatorOutput mediatorOutput = client.generateMediator(byteArray, "COAP", "MQTT_to_COAP");
 		
-		System.out.println("mediatorOutput.war.length "+mediatorOutput.war.length);*/
+		System.out.println("mediatorOutput.war.length "+mediatorOutput.war.length);
 	}
 
 	private static byte[] readBytesFromFile(String filePath){

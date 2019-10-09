@@ -88,6 +88,7 @@
 		<module>tools</module>
 		<module>mediator-generator</module>
 		<module>dexms-service</module>
+		<module>dexms-examples</module>
 	</modules>
 	<build>
 		<plugins>

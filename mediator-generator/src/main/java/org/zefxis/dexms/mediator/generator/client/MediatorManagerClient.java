@@ -30,7 +30,7 @@ public class MediatorManagerClient {
 
 	public MediatorManagerClient(String dexms_host, int dexms_port, String path) {
 
-		this.url = "http://" + dexms_host + ":" + dexms_port + "/DexmsService/dexms/"+path;
+		this.url = "http://" + dexms_host + ":" + dexms_port + "/dexms-service-1.0.0-SNAPSHOT/dexms/"+path;
 	}
 	
 	public String getStatus() {
