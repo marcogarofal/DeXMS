@@ -112,11 +112,11 @@ You can find that folder depending the operating system used :
 
 **5.  Who do I talk to?**
 
-Patient NTUMBA: patient.ntumba AT inria.fr (developer/architect)
+Patient NTUMBA: patient.ntumba AT inria.fr 
 
-Georgios Bouloukakis: Georgios.Bouloukakis AT inria.fr (designer/architect)
+Georgios Bouloukakis: Georgios.Bouloukakis AT inria.fr 
 
-Nikolaos Georgantas: nikolaos.georgantas AT inria.fr (designer)
+Nikolaos Georgantas: nikolaos.georgantas AT inria.fr 
 
 
 
