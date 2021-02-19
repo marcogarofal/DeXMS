@@ -1,8 +1,6 @@
 **1.  DeXMS**
 
-Data eXchange Mediator Synthesizer  (DeXMS) is a development and execution environment dedicated to complex distributed applications of the future Internet.
-
-These applications are open and dynamic choreographies of extremely heterogeneous objects and services, including lightweight integrated systems (such as sensors, actuators and networks of the latter), mobile systems (such as smartphone applications), and systems resource-rich computing (such as systems hosted on corporate servers and cloud infrastructures).
+Data eXchange Mediator Synthesizer  (DeXMS) is a framework dedicated to complex distributed applications of the future Internet.
 
 The goal of DeXMS is to allow developper to  perfectly interconnect services and things within choreography that use heterogeneous interaction protocols at the middleware layer, such as SOAP Web Services, REST Web Services, or things using CoAP, MQTT. So far the DeXMS supports following protocols : 
 
@@ -16,7 +14,7 @@ The goal of DeXMS is to allow developper to  perfectly interconnect services and
 
 **2. Requirements**
 
-DeXMS developped in Java it is sucessfully tested on Linux based operating system.
+DeXMS developped in Java 8 it is sucessfully tested on Linux based operating system.
 
 **3.  Inteconnecting services and things**
 
