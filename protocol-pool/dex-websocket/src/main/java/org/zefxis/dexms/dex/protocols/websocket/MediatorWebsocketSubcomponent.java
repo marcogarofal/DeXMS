@@ -20,17 +20,13 @@ import org.zefxis.dexms.gmdl.utils.enums.OperationType;
 import org.zefxis.dexms.tools.logger.GLog;
 import org.zefxis.dexms.tools.logger.Logger;
 
-import fr.inria.mimove.monitor.agent.MeasureAgent;
-import fr.inria.mimove.monitor.util.MonitorConstant;
-
-
 public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 	
 	private WebSocketServer webSocketServer = null;
 	private WebSocketObserver  webSocketObserver = null;
 	private BlockingQueue<List<Data<?>>> waitingQueue = null;
 	private GmServiceRepresentation serviceRepresentation = null;
-	private MeasureAgent agent = null;
+
 	
 	public MediatorWebsocketSubcomponent(MediatorConfiguration bcConfiguration,GmServiceRepresentation serviceRepresentation) {
 		
@@ -38,7 +34,6 @@ public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 		// TODO Auto-generated constructor stub
 		
 		System.out.println("MediatorWebsocketSubcomponent --> "+this.bcConfiguration.getSubcomponentRole());
-		agent = new MeasureAgent("timestamp_1",MonitorConstant.M1,MonitorConstant.PortTimestamp1);
 		this.serviceRepresentation = serviceRepresentation;
 		waitingQueue = new LinkedBlockingDeque<>();
 		switch (this.bcConfiguration.getSubcomponentRole()){
@@ -86,7 +81,7 @@ public class MediatorWebsocketSubcomponent  extends MediatorGmSubcomponent{
 		case CLIENT:   
 
 			
-			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation, agent);
+			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation);
 //			WebSocketObserverThread Observerthread = new WebSocketObserverThread(webSocketObserver,this, serviceRepresentation, agentMget);
 			Observerthread.start();
 			

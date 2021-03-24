@@ -14,15 +14,13 @@
 	</properties>
 
 
-	<repositories>
+	<!-- <repositories>
 		<repository>
 			<id>snapshots</id>
 			<name>http://maven.inria.fr-snapshots</name>
 			<url>http://maven.inria.fr/artifactory/zefxis-public-snapshot</url>
 		</repository>
-	</repositories>
-
-
+	</repositories> -->
 
 	<build>
 		<plugins>
@@ -38,14 +36,6 @@
 		</plugins>
 	</build>
 	<dependencies>
-
-
-		<dependency>
-			<groupId>fr.inria.mimove.monitoring-tool</groupId>
-			<artifactId>monitoring-tool</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-
 
 		<!-- Chorevolution -->
 		<dependency>

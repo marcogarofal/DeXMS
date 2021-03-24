@@ -311,11 +311,9 @@ public class MediatorGenerator{
 			gm_rest_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-rest.xml");
 			gm_mqtt_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-mqtt.xml");
 			gm_soap_war_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-soap-war.xml");
-			
-			
 	
 
-		} else{
+		}else{
 
 			gm_soap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
 					+ File.separator + "resources" + File.separator + "pom-gm-soap.xml";
@@ -360,7 +358,6 @@ public class MediatorGenerator{
 		
 		if(busProtocol == ProtocolType.SOAP ){
 			
-			
 			warGenerator.addDependencyFiles(hmapPomXml.get("soapwar"));
 			generator.compileGeneratedClasses(classesOptions);
 			warGenerator.setBusProtocol(this.busProtocol);
@@ -375,10 +372,8 @@ public class MediatorGenerator{
 			
 		}else{
 			
-			
 			if(busProtocol == ProtocolType.SOAP){
-				
-				
+					
 				vsbOutput.service_bc_port = Constants.service_bc_port;
 				vsbOutput.setinvaddr_service_port = Constants.setinvaddr_service_port;
 				vsbOutput.service_port = Constants.service_port;
@@ -391,7 +386,6 @@ public class MediatorGenerator{
 			jarGenerator.setServiceProtocol(this.serviceProtocol);
 			jarGenerator.addDependencyFiles(hmapPomXml);
 			vsbOutput.jar = generator.generateJar(jarGenerator);
-			
 		}
 		return vsbOutput;
 	}

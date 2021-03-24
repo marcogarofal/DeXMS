@@ -10,7 +10,6 @@ import org.zefxis.dexms.gmdl.utils.MediatorConfiguration;
 import org.zefxis.dexms.gmdl.utils.Scope;
 
 
-
 public abstract class MediatorGmSubcomponent implements Manageable{
   
   protected MediatorGmSubcomponent nextComponent;
@@ -22,7 +21,8 @@ public abstract class MediatorGmSubcomponent implements Manageable{
     this.bcConfiguration = bcConfiguration;
   }
   
-  public void registerObserver(String name) {
+  public void registerObserver(String name){
+	  
 	  this.subComponentObserver = new MediatorSubComponentObserver(name);
   }
   

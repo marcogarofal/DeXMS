@@ -37,18 +37,19 @@
 			<url>http://maven.restlet.org</url>
 		</repository>
 
+
 		<repository>
 			<id>jWebSocket-Repo</id>
 			<name>jWebSocket Repository</name>
 			<url>http://mvn.jwebsocket.org/</url>
 		</repository>
-
+ <!--
 		<repository>
 			<id>snapshots</id>
 			<name>http://maven.inria.fr-snapshots</name>
 			<url>http://maven.inria.fr/artifactory/zefxis-public-snapshot</url>
 		</repository>
-
+-->
 	</repositories>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -13,23 +13,19 @@ import org.zefxis.dexms.gmdl.utils.Operation;
 import org.zefxis.dexms.gmdl.utils.Data;
 import org.zefxis.dexms.gmdl.utils.enums.OperationType;
 
-import fr.inria.mimove.monitor.agent.MeasureAgent;
-
 
 public class WebSocketObserverThread extends Thread {
 
 	WebSocketObserver webSocketObserver = null;
 	MediatorWebsocketSubcomponent bcWebsocketSubcomponent = null;
 	
-    private MeasureAgent agent = null;
 	private GmServiceRepresentation serviceRepresentation = null;
 	
 	public WebSocketObserverThread(WebSocketObserver webSocketObserver, MediatorWebsocketSubcomponent bcWebsocketSubcomponent,
-			                       GmServiceRepresentation serviceRepresentation, MeasureAgent agent){
+			                       GmServiceRepresentation serviceRepresentation){
 		
 		this.webSocketObserver = webSocketObserver;
 		this.bcWebsocketSubcomponent = bcWebsocketSubcomponent;
-		this.agent = agent;
 		this.serviceRepresentation = serviceRepresentation;
 	}
 	
@@ -73,7 +69,7 @@ public class WebSocketObserverThread extends Thread {
 
 							} else if (op.getOperationType() == OperationType.ONE_WAY) {
 								
-								agent.fire2(System.nanoTime(), message_id+"-timestamp_1-mgetOneway");
+							
 								bcWebsocketSubcomponent.mgetOneway(op.getScope(), datas);
 							}
 						}
