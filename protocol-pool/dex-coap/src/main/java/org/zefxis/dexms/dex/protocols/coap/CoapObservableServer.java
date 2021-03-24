@@ -15,7 +15,6 @@ import org.zefxis.dexms.gmdl.utils.Data;
 import org.zefxis.dexms.gmdl.utils.GmServiceRepresentation;
 import org.zefxis.dexms.gmdl.utils.Operation;
 
-import fr.inria.mimove.monitor.agent.MeasureAgent;
 
 public class CoapObservableServer extends Thread {
 

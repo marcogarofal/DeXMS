@@ -12,9 +12,6 @@ import org.zefxis.dexms.gmdl.utils.MediatorConfiguration;
 import org.zefxis.dexms.gmdl.utils.GmServiceRepresentation;
 import org.zefxis.dexms.gmdl.utils.Scope;
 
-import fr.inria.mimove.monitor.agent.ExperimentAgent;
-import fr.inria.mimove.monitor.agent.MeasureAgent;
-import fr.inria.mimove.monitor.util.MonitorConstant;
 
 import org.zefxis.dexms.gmdl.utils.Data;
 

@@ -60,13 +60,7 @@
 			<version>1.0.3</version>
 			<type>jar</type>
 		</dependency>
-		<!-- Monitoring tool -->
-		<dependency>
-			<groupId>fr.inria.mimove.monitoring-tool</groupId>
-			<artifactId>monitoring-tool</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
+		<!-- Monitoring tool -->	
 		
 	</dependencies>
 </project>
