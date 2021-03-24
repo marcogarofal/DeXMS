@@ -24,8 +24,9 @@ job_build_ci:
   tags:
     - test
   script:
-    - source /etc/environment && mvn clean verify
+    - source /etc/environment && mvn compile
     - source /etc/environment && mvn install
+    - source /etc/environment && mvn verify
   artifacts:
     paths:
     - dexms-service/target/
