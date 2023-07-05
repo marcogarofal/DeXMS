@@ -68,16 +68,16 @@
 		</developer>
 	</developers>
 	<distributionManagement>
-		<repository>
+		<!-- <repository>
 			<id>central</id>
 			<name>http://maven.inria.fr-releases</name>
 			<url>http://maven.inria.fr/artifactory/zefxis-public-release</url>
-		</repository>
-		<snapshotRepository>
+		</repository> -->
+		<!-- <snapshotRepository>
 			<id>snapshots</id>
 			<name>http://maven.inria.fr-snapshots</name>
 			<url>http://maven.inria.fr/artifactory/zefxis-public-snapshot</url>
-		</snapshotRepository>
+		</snapshotRepository> -->
 	</distributionManagement>
 	<modules>
 		<module>dex-api</module>

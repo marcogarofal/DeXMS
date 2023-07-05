@@ -48,6 +48,7 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 
 	@Override
 	public void start(){
+		System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		switch (this.bcConfiguration.getSubcomponentRole()) {
 		case SERVER:
 			

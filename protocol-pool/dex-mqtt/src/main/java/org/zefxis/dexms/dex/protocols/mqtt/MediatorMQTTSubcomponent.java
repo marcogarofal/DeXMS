@@ -143,7 +143,6 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 						
 						client.subscribe((String) en.getKey());
 						if(client.isConnected()){
-							
 							System.out.println(client.getClientId()+"subribes topic "+(String) en.getKey());
 							
 						}else{
@@ -197,8 +196,9 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 	@Override
 	public void postOneway(final String destination, final Scope scope, final List<Data<?>> datas, final long lease) {
 		// TODO Auto-generated method stub
-		
-	
+		System.out.println("This is postOneway of MQTT");
+		System.out.println("This is postOneway of MQTT");
+		System.out.println("This is postOneway of MQTT");
 		MqttMessage message = new MqttMessage();
 		message.setQos(0);
 		JSONObject jsonObject = new JSONObject();
@@ -212,7 +212,7 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 		try {
 
 			client.publish(scope.getUri(), message);
-
+			System.out.println("This is the message I'm sending: "+message);
 		} catch (MqttPersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -225,7 +225,9 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 
 	@Override
 	public void mgetOneway(final Scope scope, final Object exchange) {
-
+		System.out.println("This is mgetOneWay of MQTT, I'm sendint to setNextComponent this data: "+exchange.toString());
+		System.out.println("This is the URI I'm sending to: "+scope.getUri());
+		System.out.println("This is the scope I'm sending to: "+scope.getName());
 		this.nextComponent.postOneway(this.bcConfiguration.getServiceAddress(), scope, (List<Data<?>>) exchange, 0);
 
 	}

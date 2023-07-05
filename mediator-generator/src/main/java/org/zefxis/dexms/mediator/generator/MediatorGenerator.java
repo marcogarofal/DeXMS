@@ -63,7 +63,6 @@ import com.sun.codemodel.JVar;
 
 
 public class MediatorGenerator{
-	
 	private boolean STARTING_FROM_JAR = false;
 	private ProtocolType serviceProtocol = null;
 	private ProtocolType busProtocol = null;
@@ -98,10 +97,13 @@ public class MediatorGenerator{
 	 */
 
 	public MediatorOutput generate(String interfaceDescriptionPath, ProtocolType busProtocol, String service_name) {
-
 		service_name = deleteSpecialChar(service_name);
 		Constants.service_name = service_name;
+		System.out.println("service name is:"+service_name);
+		System.out.println("the interface description path:"+interfaceDescriptionPath);
+		System.out.println("bus protocol:"+busProtocol);
 		MediatorOutput vsbOutput = generate(interfaceDescriptionPath, busProtocol);
+		System.out.println("this is the service name:"+vsbOutput.service_name+"this is the service name :"+vsbOutput.subcomponent_port);
 		return vsbOutput;
 	}
 	
@@ -241,12 +243,14 @@ public class MediatorGenerator{
 			}
 			PathResolver.extractDirectoryFromJar(webapp_src_artifact, artifact_generators_copy);
 
-		} else{
-
-			PathResolver.copyFolder(new File(".." + File.separator + "artifact-generators" + File.separator + "src"+ File.separator +"main").getAbsolutePath(),
+		} 
+		
+		else{
+			System.out.println("It works");
+			PathResolver.copyFolder(new File(".." + File.separator + ".." + File.separator +"dexapi" + File.separator + "artifact-generators" + File.separator + "src"+ File.separator +"main").getAbsolutePath(),
 					artifact_generators_copy);
 		}
-
+		
 		PathResolver.updatePortServiceSetInvAddr(Constants.setinvaddr_service_port);
 		Constants.webapp_src_artifact = new File(artifact_generators_copy + File.separator +  File.separator + "webapp").getAbsolutePath();
 		Constants.warName = "war" + Constants.service_name + "BC";
@@ -258,6 +262,7 @@ public class MediatorGenerator{
 		Constants.soap_service_name = "BC" + Constants.service_name + "SoapEndpoint";
 		Constants.dpws_service_name = "BC" + Constants.service_name + "DPWSEndpoint";
 		Constants.wsdlDestination = new File(Constants.generatedCodePath).getAbsolutePath();
+		
 	}
 
 	private MediatorOutput generate(String interfaceDescriptionPath, ProtocolType busProtocol) {
@@ -315,20 +320,43 @@ public class MediatorGenerator{
 
 		}else{
 
-			gm_soap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-soap.xml";
-			gm_coap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-coap.xml";
-			gm_dpws_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-dpws.xml";
-			gm_websocket_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-websocket.xml";
-			gm_rest_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-rest.xml";
-			gm_mqtt_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-							+ File.separator + "resources" + File.separator + "pom-gm-mqtt.xml";
-			gm_soap_war_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-soap-war.xml";
+			//gm_soap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			//		+ File.separator + "resources" + File.separator + "pom-gm-soap.xml";
+			gm_soap_pomxml = new File(".").getAbsolutePath() + File.separator + ".." + File.separator + ".." + File.separator + "dexapi" +File.separator +  "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-soap.xml";
+			
+			
+			//gm_coap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			//		+ File.separator + "resources" + File.separator + "pom-gm-coap.xml";
+			gm_coap_pomxml = new File(".").getAbsolutePath() + File.separator + ".." + File.separator + ".." + File.separator + "dexapi" +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-coap.xml";
+			
+			//gm_dpws_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			//		+ File.separator + "resources" + File.separator + "pom-gm-dpws.xml";
+			gm_dpws_pomxml = new File(".").getAbsolutePath() + File.separator + ".." +  File.separator + ".." + File.separator + "dexapi" +File.separator +  "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-dpws.xml";
+			
+			//gm_websocket_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			//		+ File.separator + "resources" + File.separator + "pom-gm-websocket.xml";
+			gm_websocket_pomxl = new File(".").getAbsolutePath() + File.separator + ".." + File.separator + ".." + File.separator + "dexapi" +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-websocket.xml";
+			
+//			gm_rest_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+//					+ File.separator + "resources" + File.separator + "pom-gm-rest.xml";
+			gm_rest_pomxl = new File(".").getAbsolutePath() + File.separator + ".." + File.separator + ".." + File.separator + "dexapi" +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-rest.xml";
+			
+			//gm_mqtt_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			//				+ File.separator + "resources" + File.separator + "pom-gm-mqtt.xml";
+			gm_mqtt_pomxl = new File(".").getAbsolutePath() + File.separator + ".." + File.separator + ".." + File.separator + "dexapi" +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-mqtt.xml";
+			
+			System.out.println("I'm printing the path here");
+			System.out.println(gm_mqtt_pomxl.toString());
+			//gm_soap_war_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			//		+ File.separator + "resources" + File.separator + "pom-gm-soap-war.xml";
+			gm_soap_war_pomxml =new File(".").getAbsolutePath() + File.separator + ".." + File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator +"pom-gm-soap-war.xml";
 
 		}
 
@@ -345,7 +373,9 @@ public class MediatorGenerator{
 
 		Generator generator = new Generator(busProtocol);
 		MediatorOutput vsbOutput = new MediatorOutput();
+		//System.out.println(vsbOutput.toString());
 		vsbOutput.generatedCodePath = Constants.generatedCodePath;
+		//System.out.println(vsbOutput.generatedCodePath);
 		vsbOutput.service_name = Constants.service_name;
 		
 		Class[] classesOptions = new Class[]{
@@ -594,6 +624,9 @@ public class MediatorGenerator{
 				.ref(org.zefxis.dexms.dex.protocols.mqtt.MediatorMQTTSubcomponent.class);
 		JClass BcCoapSubcomponentClass = jCodeModel
 				.ref(org.zefxis.dexms.dex.protocols.coap.MediatorCoapSubcomponent.class);
+		System.out.println("BcRestSubcomponentClass Created");
+		System.out.println("BcRestSubcomponentClass Created");
+		System.out.println("BcRestSubcomponentClass Created");
 		JClass BcDpwsSubcomponentClass = jCodeModel
 				.ref(org.zefxis.dexms.dex.protocols.dpws.MediatorDPWSSubcomponent.class);
 		JClass BcWebSocketSubcomponentClass = jCodeModel
@@ -664,10 +697,11 @@ public class MediatorGenerator{
 
 		switch (busProtocol){
 		case REST:
-
+			System.out.println("Case REST");
 			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
 				createConfigFileBusProtocole(ProtocolType.REST, gmServiceRepresentation.getHostAddress(),Constants.webapp_src_artifact + File.separator
 						+ "config" + File.separator + "config_block1_interface_" + String.valueOf(i));
+				System.out.println(gmServiceRepresentation.getInterfaces());
 			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
 					JExpr._new(BcRestSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
 			// BcGmSubcomponentVar1.init(JExpr._new(BcRestSubcomponentClass).arg(bcConfig1Var));

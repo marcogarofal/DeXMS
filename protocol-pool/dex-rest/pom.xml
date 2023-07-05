@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>dex-api</artifactId>
-			<version>${DeXMS.version}</version>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 		<!-- JSON Parsing & Mapping -->
 		<dependency>

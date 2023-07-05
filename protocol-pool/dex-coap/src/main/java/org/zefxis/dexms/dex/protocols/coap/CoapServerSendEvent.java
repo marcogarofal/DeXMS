@@ -15,7 +15,7 @@ public class CoapServerSendEvent extends CoapServer {
     private LinkedList<String> buffer = null;
     
     public CoapServerSendEvent(LinkedList<String> buffer){
-    	
+    	System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
     	this.buffer = buffer;
     	add(new CoapPushDataResource());
     }

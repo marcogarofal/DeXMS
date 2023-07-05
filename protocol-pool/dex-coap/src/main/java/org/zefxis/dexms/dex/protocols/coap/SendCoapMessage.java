@@ -6,7 +6,6 @@ import org.eclipse.californium.core.coap.MediaTypeRegistry;
 
 
 	public class SendCoapMessage extends Thread{
-		
 		String message = null;
 		CoapClient client = null;
 		

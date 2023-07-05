@@ -18,16 +18,21 @@ public abstract class MediatorGmSubcomponent implements Manageable{
   protected MediatorSubComponentObserver subComponentObserver;
   
   public MediatorGmSubcomponent(MediatorConfiguration bcConfiguration) {
+	  System.out.println("MediatorGmSubcomponent");
     this.bcConfiguration = bcConfiguration;
   }
   
   public void registerObserver(String name){
-	  
+	  System.out.println("registerObserver");
 	  this.subComponentObserver = new MediatorSubComponentObserver(name);
   }
   
   
   public void setNextComponent(MediatorGmSubcomponent nextComponent) {
+	  System.out.println("setNextComponent");
+	  System.out.println("setNextComponent");
+	  System.out.println("setNextComponent");
+	  System.out.println(nextComponent.toString());
     this.nextComponent = nextComponent; 
   }
   
@@ -49,7 +54,6 @@ public abstract class MediatorGmSubcomponent implements Manageable{
    * @param lease for how long the data sent will be valid
    */
   public abstract void postOneway(final String destination, final Scope scope, final List<Data<?>> data, final long lease);
-  
   /* ------ One-way Receiver ------ */
   
   /**
