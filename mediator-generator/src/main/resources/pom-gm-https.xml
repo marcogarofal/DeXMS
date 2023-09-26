@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>MediatorGeneratorTest</groupId>
-	<artifactId>MediatorGeneratorTest-rest</artifactId>
+	<artifactId>MediatorGeneratorTest-https</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<build>
@@ -28,7 +28,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
 	<repositories>
 		<!-- REST library: Restlet -->
 		<repository>
@@ -37,7 +36,7 @@
 			<url>http://maven.restlet.org</url>
 		</repository>
 
-		<!-- <repository>
+	<!-- <repository>
 			<id>snapshots</id>
 			<name>http://maven.inria.fr-snapshots</name>
 			<url>http://maven.inria.fr/artifactory/zefxis-public-snapshot</url>
@@ -55,29 +54,7 @@
 	</properties>
 
 	<dependencies>
-			<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-servlet</artifactId>
-    <version>9.4.12.RC0</version>
-</dependency>
-     <dependency>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-server</artifactId>
-        <version>9.4.12.RC0</version> <!-- Use the latest Jetty version -->
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
-<dependency>
-    <groupId>org.eclipse.jetty</groupId>
-    <artifactId>jetty-util</artifactId>
-    <version>9.4.12.RC0</version>
-</dependency>		
-<!-- BCgenerator -->
-
-		<dependency>
-			<groupId>org.zefxis.dexms</groupId>
-			<artifactId>artifact-generators</artifactId>
-			<version>${DeXMS.version}</version>
-		</dependency>
+		<!-- BCgenerator -->
 
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
@@ -86,12 +63,42 @@
 		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
-			<artifactId>dex-rest</artifactId>
+			<artifactId>dex-https</artifactId>
 			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>service-parser</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.eclipse.jetty</groupId>
+    		<artifactId>jetty-servlet</artifactId>
+    		<version>9.4.12.RC0</version>
+		</dependency>
+     	<dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-server</artifactId>
+        	<version>9.4.12.RC0</version> 
+    	</dependency>
+		<dependency>
+    		<groupId>org.eclipse.jetty</groupId>
+    		<artifactId>jetty-util</artifactId>
+    		<version>9.4.12.RC0</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.eclipse.jetty</groupId>
+    		<artifactId>jetty-io</artifactId>
+    		<version>9.4.12.RC0</version>
+		</dependency>
+				<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpclient</artifactId>
+    		<version>4.5.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>artifact-generators</artifactId>
 			<version>${DeXMS.version}</version>
 		</dependency>
 		<dependency>
@@ -109,7 +116,6 @@
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
 	</dependencies>
 
 </project>
