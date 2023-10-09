@@ -4,7 +4,7 @@
     <hasOperations name="randomValue" type="one_way" qos="reliable">
       <hasScope name="randomValue" verb="POST" uri="randomValue"/>
       <inputData name="request" context="body" media="json">
-        <hasDataType xsi:type="gidl:SimpleType" name="randomValue" minOccurs="one" maxOccurs="one" type="double"/>
+        <hasDataType xsi:type="gidl:SimpleType" name="randomValue" minOccurs="one" maxOccurs="one" type="string"/>
       </inputData>
     </hasOperations>
   </hasInterfaces>

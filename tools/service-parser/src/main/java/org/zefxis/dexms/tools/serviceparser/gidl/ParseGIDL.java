@@ -11,16 +11,16 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.json.simple.parser.JSONParser;
 
-import eu.chorevolution.modelingnotations.gidl.ComplexType;
-import eu.chorevolution.modelingnotations.gidl.ContextTypes;
-import eu.chorevolution.modelingnotations.gidl.DataType;
-import eu.chorevolution.modelingnotations.gidl.GIDLModel;
-import eu.chorevolution.modelingnotations.gidl.InterfaceDescription;
-import eu.chorevolution.modelingnotations.gidl.MediaTypes;
-import eu.chorevolution.modelingnotations.gidl.OccurrencesTypes;
-import eu.chorevolution.modelingnotations.gidl.SimpleType;
-import eu.chorevolution.modelingnotations.gidl.SimpleTypes;
-import eu.chorevolution.modelingnotations.gidl.impl.GidlPackageImpl;
+import org.zefxis.dexms.modelingnotations.gidl.ComplexType;
+import org.zefxis.dexms.modelingnotations.gidl.ContextTypes;
+import org.zefxis.dexms.modelingnotations.gidl.DataType;
+import org.zefxis.dexms.modelingnotations.gidl.GIDLModel;
+import org.zefxis.dexms.modelingnotations.gidl.InterfaceDescription;
+import org.zefxis.dexms.modelingnotations.gidl.MediaTypes;
+import org.zefxis.dexms.modelingnotations.gidl.OccurrencesTypes;
+import org.zefxis.dexms.modelingnotations.gidl.SimpleType;
+import org.zefxis.dexms.modelingnotations.gidl.SimpleTypes;
+import org.zefxis.dexms.modelingnotations.gidl.impl.GidlPackageImpl;
 
 import org.zefxis.dexms.gmdl.utils.MediatorConfiguration;
 import org.zefxis.dexms.gmdl.utils.GmServiceRepresentation;
@@ -102,7 +102,7 @@ public class ParseGIDL {
 		return data_type_str;
 	}
 
-	private static void addDataObject(Operation op, String getOrPost, eu.chorevolution.modelingnotations.gidl.Data getData, GmServiceRepresentation serviceRepresentation) {
+	private static void addDataObject(Operation op, String getOrPost, org.zefxis.dexms.modelingnotations.gidl.Data getData, GmServiceRepresentation serviceRepresentation) {
 		String data_name = getData.getName();
 		ContextTypes contextType = getData.getContext();
 		MediaTypes  mediaTypes = getData.getMedia();
@@ -236,7 +236,7 @@ public class ParseGIDL {
 		GmServiceRepresentation serviceRepresentation = new GmServiceRepresentation();
 
 		String host_address = gidlModel.getHostAddress();
-		eu.chorevolution.modelingnotations.gidl.ProtocolTypes protocol = gidlModel.getProtocol();
+		org.zefxis.dexms.modelingnotations.gidl.ProtocolTypes protocol = gidlModel.getProtocol();
 
 		serviceRepresentation.setHostAddress(host_address);
 
@@ -252,9 +252,9 @@ public class ParseGIDL {
 
 			// Looping through all the operations and adding our constructed operation object to interface object 
 
-			EList<eu.chorevolution.modelingnotations.gidl.Operation> ops = inter.getHasOperations();
+			EList<org.zefxis.dexms.modelingnotations.gidl.Operation> ops = inter.getHasOperations();
 
-			for(eu.chorevolution.modelingnotations.gidl.Operation opGidl: ops) {
+			for(org.zefxis.dexms.modelingnotations.gidl.Operation opGidl: ops) {
 
 				// Getting operation name
 				String operation_name = opGidl.getName();
@@ -272,8 +272,8 @@ public class ParseGIDL {
 				Operation op = new Operation(operation_name, type, qosType, scope);      
 
 				// Adding Input Data
-				EList<eu.chorevolution.modelingnotations.gidl.Data> getDataGidl = opGidl.getInputData();
-				for(eu.chorevolution.modelingnotations.gidl.Data getData: getDataGidl) {
+				EList<org.zefxis.dexms.modelingnotations.gidl.Data> getDataGidl = opGidl.getInputData();
+				for(org.zefxis.dexms.modelingnotations.gidl.Data getData: getDataGidl) {
 					
 					
 					addDataObject(op, "get", getData, serviceRepresentation); 
@@ -281,8 +281,8 @@ public class ParseGIDL {
 				}
 
 				// Adding Output data
-				EList<eu.chorevolution.modelingnotations.gidl.Data> postDataGidl = opGidl.getOutputData();
-				for(eu.chorevolution.modelingnotations.gidl.Data postData: postDataGidl) {
+				EList<org.zefxis.dexms.modelingnotations.gidl.Data> postDataGidl = opGidl.getOutputData();
+				for(org.zefxis.dexms.modelingnotations.gidl.Data postData: postDataGidl) {
 					
 					addDataObject(op, "post", postData, serviceRepresentation); 
 				}
@@ -300,7 +300,7 @@ public class ParseGIDL {
 	}
 
 	private void setProtocol(GmServiceRepresentation serviceRepresentation,
-			eu.chorevolution.modelingnotations.gidl.ProtocolTypes protocol) {
+			org.zefxis.dexms.modelingnotations.gidl.ProtocolTypes protocol) {
 		switch(protocol) {
 		case REST:
 			serviceRepresentation.setProtocol(ProtocolType.REST);
@@ -332,13 +332,15 @@ public class ParseGIDL {
 		case ZERO_MQ:
 			serviceRepresentation.setProtocol(ProtocolType.ZERO_MQ);
 			break;
+		case HTTPS:
+			serviceRepresentation.setProtocol(ProtocolType.HTTPS);
 		}
 	}
 
 	private Scope getScope(
-			eu.chorevolution.modelingnotations.gidl.Operation opGidl) {
+			org.zefxis.dexms.modelingnotations.gidl.Operation opGidl) {
 
-		eu.chorevolution.modelingnotations.gidl.Scope scopeGidl = opGidl.getHasScope();
+		org.zefxis.dexms.modelingnotations.gidl.Scope scopeGidl = opGidl.getHasScope();
 
 		Scope scope = new Scope();
 
@@ -370,9 +372,9 @@ public class ParseGIDL {
 	}
 
 	private QosType getQos(
-			eu.chorevolution.modelingnotations.gidl.Operation opGidl) {
+			org.zefxis.dexms.modelingnotations.gidl.Operation opGidl) {
 
-		eu.chorevolution.modelingnotations.gidl.QosTypes qosTypeGidl = opGidl.getQos();
+		org.zefxis.dexms.modelingnotations.gidl.QosTypes qosTypeGidl = opGidl.getQos();
 		QosType qosType = null;
 		switch(qosTypeGidl) {
 		case RELIABLE:
@@ -387,9 +389,9 @@ public class ParseGIDL {
 	}
 
 	private OperationType getOperationType(
-			eu.chorevolution.modelingnotations.gidl.Operation opGidl) {
+			org.zefxis.dexms.modelingnotations.gidl.Operation opGidl) {
 
-		eu.chorevolution.modelingnotations.gidl.OperationTypes operation_type = opGidl.getType();  
+		org.zefxis.dexms.modelingnotations.gidl.OperationTypes operation_type = opGidl.getType();  
 		OperationType type = null;
 		switch(operation_type) {
 		case ONE_WAY:
@@ -413,7 +415,7 @@ public class ParseGIDL {
 			InterfaceDescription inter) {
 
 		Interface interfaceObj = null;
-		eu.chorevolution.modelingnotations.gidl.RoleTypes roleNameEnum = inter.getRole();
+		org.zefxis.dexms.modelingnotations.gidl.RoleTypes roleNameEnum = inter.getRole();
 		switch(roleNameEnum) {
 		case PROVIDER:
 			interfaceObj = new Interface(RoleType.SERVER);
@@ -426,3 +428,12 @@ public class ParseGIDL {
 
 	}
 }
+
+
+
+
+
+
+
+
+

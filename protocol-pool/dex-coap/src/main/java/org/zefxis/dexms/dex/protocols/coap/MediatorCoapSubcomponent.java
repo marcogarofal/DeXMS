@@ -48,7 +48,6 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 
 	@Override
 	public void start(){
-		System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		switch (this.bcConfiguration.getSubcomponentRole()) {
 		case SERVER:
 			
@@ -93,7 +92,8 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 
 	@Override
 	public void postOneway(final String destination, final Scope scope, final List<Data<?>> datas, final long lease) {
-		
+		System.out.println("This is postOneway CoAP");
+
 		JSONObject jsonObject = new JSONObject();
 
 		for (Data<?> data : datas) {
@@ -113,13 +113,15 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 
 	@Override
 	public void mgetOneway(final Scope scope, final Object exchange) {
-		
+		System.out.println("This is mgetOneway CoAP");
 		this.nextComponent.postOneway(this.bcConfiguration.getServiceAddress(), scope, (List<Data<?>>) exchange, 0);
 		
 	}
 
 	@Override
 	public void xmgetOneway(final String source, final Scope scope, final Object exchange) {
+		System.out.println("This is xmgetOneway CoAP");
+
 		this.nextComponent.postOneway(this.bcConfiguration.getServiceAddress(), scope, (List<Data<?>>) exchange, 0);
 	}
 

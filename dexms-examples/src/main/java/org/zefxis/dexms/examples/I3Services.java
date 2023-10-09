@@ -10,25 +10,23 @@ import org.zefxis.dexms.mediator.manager.MediatorOutput;
 public class I3Services {
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
-			
-			//MediatorHttpsSubcomponent A = new MediatorHttpsSubcomponent(null, null);
-			
-			
+						
 			MediatorGenerator mediator = new MediatorGenerator();
 
 			// Corresponds to the IP address and port number of the MQTT broker
 			mediator.setServiceEndpoint("127.0.0.1", "1883");
 
 			// Corresponds to the IP address and port number of the CoAP endpoint
-			mediator.setBusEndpoint("127.0.0.1", "6600");
+			mediator.setBusEndpoint("127.0.0.1", "3333");
 
 			String gidlFile = "src/main/java/org/zefxis/dexms/examples/randomValue.gidl";
-			MediatorOutput output = mediator.generate(gidlFile, ProtocolType.HTTPS, "MQTT_to_HTTPS");
+			MediatorOutput output = mediator.generate(gidlFile, ProtocolType.HTTPS, "MQTT_TO_HTTPS");
 			try {
-				FileUtils.writeByteArrayToFile(new File("MQTT_to_HTTPS.jar"), output.jar);
+				FileUtils.writeByteArrayToFile(new File("MQTT_TO_HTTPS.jar"), output.jar);
 			} 
 			catch (IOException e) {e.printStackTrace();}
 			
+		
 			
 		}
 	}

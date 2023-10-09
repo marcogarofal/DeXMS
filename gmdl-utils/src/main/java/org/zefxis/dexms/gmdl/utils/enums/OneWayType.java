@@ -27,5 +27,7 @@ public enum OneWayType {
 	WEBSOCKET_to_DPWS,
 	WEBSOCKET_to_MQTT,
 	
+	HTTPS_to_MQTT;
+	
 	
 }
