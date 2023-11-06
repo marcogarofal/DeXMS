@@ -40,16 +40,18 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 
 			broker = new MqttBroker(this.bcConfiguration.getSubcomponentAddress(),
 					this.bcConfiguration.getSubcomponentPort());
-			try {
-				serverSubscriber = new MqttClient("tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
-						+ this.bcConfiguration.getSubcomponentPort(), "serverSubscriber");
-			} catch (MqttException e1) {
-				e1.printStackTrace();
-			}
-			serverSubscriber.setCallback(new MediatorMQTTSubscriberCallback(this, serviceRepresentation));
+			//try {
+			//	serverSubscriber = new MqttClient("tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
+			//			+ this.bcConfiguration.getSubcomponentPort(), "serverSubscriber");
+			//} catch (MqttException e1) {
+			//	e1.printStackTrace();
+			//}
+			//serverSubscriber.setCallback(new MediatorMQTTSubscriberCallback(this, serviceRepresentation));
 			try {
 				serverPublisher = new MqttClient("tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
 						+ this.bcConfiguration.getSubcomponentPort(), "serverPublisher");
+				System.out.println("MQTT broker address "+ "tcp://" + this.bcConfiguration.getSubcomponentAddress() + ":"
+						+ this.bcConfiguration.getSubcomponentPort());
 			} catch (MqttException e1) {
 				e1.printStackTrace();
 			}
@@ -81,7 +83,7 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 		case SERVER:
 
 			try {
-
+				System.out.println("SERVER MQTT");
 				InetAddress ip = InetAddress.getLocalHost();
 				if (ip.getHostAddress().equals(this.bcConfiguration.getSubcomponentAddress().toString())) {
 
@@ -93,16 +95,17 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 				e1.printStackTrace();
 			}
 
-			try {
+			//try {
+			//	System.out.println("try bloc MQTT");
 
-				MqttConnectOptions options = new MqttConnectOptions();
-				options.setCleanSession(false);
-				serverSubscriber.connect(options);
+			//	MqttConnectOptions options = new MqttConnectOptions();
+			//	options.setCleanSession(false);
+				//serverSubscriber.connect(options);
 
-			} catch (MqttException e) {
+			//} catch (MqttException e) {
 
-				e.printStackTrace();
-			}
+//				e.printStackTrace();
+//			}
 
 			try {
 
@@ -114,15 +117,21 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 				e.printStackTrace();
 			}
 
-			for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations()
-					.entrySet()) {
-				try {
-					serverSubscriber.subscribe((String) en.getKey());
-				} catch (MqttException e) {
-					e.printStackTrace();
-				}
-				GLog.log.i("Info", "Server subscriber subscribed to " + (String) en.getKey());
-			}
+			//for (Entry<String, Operation> en : serviceRepresentation.getInterfaces().get(0).getOperations()
+			//		.entrySet()) {
+			//	try {
+			//		System.out.println("FOR loop bloc MQTT");
+
+			//		serverSubscriber.subscribe((String) en.getKey());
+			//		System.out.println("en.getKey(): "+ en.getKey());
+
+					//GLog.log.i("Info", "Server subscriber subscribed to " + (String) en.getKey());
+			//	} catch (MqttException e) {
+			//		e.printStackTrace();
+			//	}
+			//	System.out.println("Outside the FOR loop bloc MQTT");
+			//	System.out.println("After Glog");
+			//}
 			break;
 		case CLIENT:
 			
@@ -197,22 +206,17 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 	public void postOneway(final String destination, final Scope scope, final List<Data<?>> datas, final long lease) {
 		// TODO Auto-generated method stub
 		System.out.println("This is postOneway of MQTT");
-		System.out.println("This is postOneway of MQTT");
-		System.out.println("This is postOneway of MQTT");
 		MqttMessage message = new MqttMessage();
 		message.setQos(0);
 		JSONObject jsonObject = new JSONObject();
 		for (Data data : datas){
-
 			jsonObject.put(data.getName(), String.valueOf(data.getObject()));
 
 		}
-
 		message.setPayload(jsonObject.toJSONString().getBytes());
 		try {
-
-			client.publish(scope.getUri(), message);
-			System.out.println("This is the message I'm sending: "+message);
+		
+			serverPublisher.publish(scope.getUri(), message);
 		} catch (MqttPersistenceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -226,8 +230,6 @@ public class MediatorMQTTSubcomponent extends MediatorGmSubcomponent{
 	@Override
 	public void mgetOneway(final Scope scope, final Object exchange) {
 		System.out.println("This is mgetOneWay of MQTT, I'm sendint to setNextComponent this data: "+exchange.toString());
-		System.out.println("This is the URI I'm sending to: "+scope.getUri());
-		System.out.println("This is the scope I'm sending to: "+scope.getName());
 		this.nextComponent.postOneway(this.bcConfiguration.getServiceAddress(), scope, (List<Data<?>>) exchange, 0);
 
 	}

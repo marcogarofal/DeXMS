@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import javax.jws.WebMethod;
 import javax.jws.WebService;
 import org.zefxis.dexms.dex.protocols.mqtt.MQTTResponseBuilder;
 import org.zefxis.dexms.dex.protocols.primitives.MediatorGmSubcomponent;
@@ -20,7 +19,7 @@ public class Mediator {
         this.apiRef = apiRef;
     }
 
-    @WebMethod
+    @javax.jws.WebMethod
     public RootClass getMeteoInfoByArea(Integer period, Double latitude, Double longitude, Double radius) {
         List<Data<?>> datas = new ArrayList<Data<?>>();
         datas.add(new Data<Integer>("period", "Integer", true, period, "PATH"));
@@ -31,7 +30,7 @@ public class Mediator {
         return MQTTResponseBuilder.unmarshalObject("application/json", serializedrootClass, RootClass.class);
     }
 
-    @WebMethod
+    @javax.jws.WebMethod
     public RootClass getMeteoInfo(Integer period) {
         List<Data<?>> datas = new ArrayList<Data<?>>();
         datas.add(new Data<Integer>("period", "Integer", true, period, "PATH"));

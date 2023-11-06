@@ -37,7 +37,6 @@ public class CoapObserver implements Runnable {
 
 	public CoapObserver(MediatorGmSubcomponent bcGmSubcomponent, GmServiceRepresentation serviceRepresentation,
 			MediatorConfiguration bcConfiguration) {
-		System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		this.bcGmSubcomponent = (MediatorCoapSubcomponent) bcGmSubcomponent;
 		this.serviceRepresentation = serviceRepresentation;
 

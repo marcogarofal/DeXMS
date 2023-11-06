@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import javax.jws.WebMethod;
 import javax.jws.WebService;
 import org.zefxis.dexms.dex.protocols.mqtt.MQTTResponseBuilder;
 import org.zefxis.dexms.dex.protocols.primitives.MediatorGmSubcomponent;
@@ -20,7 +19,7 @@ public class Mediator {
         this.apiRef = apiRef;
     }
 
-    @WebMethod
+    @javax.jws.WebMethod
     public TrafficLight getTrafficLight(Integer id) {
         List<Data<?>> datas = new ArrayList<Data<?>>();
         datas.add(new Data<Integer>("id", "Integer", true, id, "PATH"));
@@ -28,7 +27,7 @@ public class Mediator {
         return MQTTResponseBuilder.unmarshalObject("application/json", serializedlight, TrafficLight.class);
     }
 
-    @WebMethod
+    @javax.jws.WebMethod
     public void postTrafficLight(TrafficLight light) {
         List<Data<?>> datas = new ArrayList<Data<?>>();
         datas.add(new Data<TrafficLight>("light", "TrafficLight", false, light, "BODY"));

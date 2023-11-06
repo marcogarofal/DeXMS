@@ -55,13 +55,23 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.restlet.jse</groupId>
-			<artifactId>org.restlet</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-
-		<!-- BCgenerator -->
+			<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-servlet</artifactId>
+    <version>9.4.12.RC0</version>
+</dependency>
+     <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-server</artifactId>
+        <version>9.4.12.RC0</version> <!-- Use the latest Jetty version -->
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-util</artifactId>
+    <version>9.4.12.RC0</version>
+</dependency>		
+<!-- BCgenerator -->
 
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>

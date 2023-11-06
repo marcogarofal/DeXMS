@@ -49,6 +49,16 @@
 			<artifactId>dex-dpws</artifactId>
 			<version>${DeXMS.version}</version>
 		</dependency>
+				<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-https</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-coaps</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>dex-mqtt</artifactId>

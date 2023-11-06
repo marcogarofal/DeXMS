@@ -1,6 +1,7 @@
 package org.zefxis.dexms.gmdl.utils.enums;
 
 public enum ProtocolType {
+  HTTPS,
   SOAP,
   REST,
   MQTT,
@@ -10,6 +11,7 @@ public enum ProtocolType {
   PUB_NUB,
   COAP,
   ZERO_MQ,
-  DPWS;
+  DPWS,
+  COAPS;
 }
 

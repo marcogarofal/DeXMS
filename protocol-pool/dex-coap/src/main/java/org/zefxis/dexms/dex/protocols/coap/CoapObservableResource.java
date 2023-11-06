@@ -28,13 +28,14 @@ public class CoapObservableResource extends CoapResource {
 		boolean resourceChanged = false;
 		try {
 			String datastream = waitingQueue.take();
+			
 
 			if (datastream != null) {
 
 				if (this.resource != datastream) {
-
 					resourceChanged = true;
 					this.resource = datastream;
+					
 
 				}
 

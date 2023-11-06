@@ -20,12 +20,14 @@ import org.zefxis.dexms.artifact.generators.Generator;
 import org.zefxis.dexms.artifact.generators.JarGenerator;
 import org.zefxis.dexms.artifact.generators.WarGenerator;
 import org.zefxis.dexms.dex.protocols.coap.MediatorCoapSubcomponent;
+import org.zefxis.dexms.dex.protocols.coaps.MediatorCoapsSubcomponent;
 import org.zefxis.dexms.dex.protocols.dpws.MediatorDPWSSubcomponent;
 import org.zefxis.dexms.dex.protocols.mqtt.MediatorMQTTSubcomponent;
 import org.zefxis.dexms.dex.protocols.primitives.MediatorGmSubcomponent;
 import org.zefxis.dexms.dex.protocols.rest.MediatorRestSubcomponent;
 import org.zefxis.dexms.dex.protocols.soap.MediatorSoapGenerator;
 import org.zefxis.dexms.dex.protocols.soap.MediatorSoapSubcomponent;
+import org.zefxis.dexms.dex.protocols.https.MediatorHttpsSubcomponent;
 import org.zefxis.dexms.dex.protocols.websocket.MediatorWebsocketSubcomponent;
 import org.zefxis.dexms.gmdl.utils.Constants;
 import org.zefxis.dexms.gmdl.utils.GmServiceRepresentation;
@@ -286,8 +288,11 @@ public class MediatorGenerator{
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.mqtt.MediatorMQTTGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.websocket.MediatorWebsocketGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.coap.MediatorCoapGenerator.class.getPackage());
+		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.coaps.MediatorCoapsGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.soap.MediatorSoapGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.rest.MediatorRestGenerator.class.getPackage());
+		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.https.MediatorHttpsGenerator.class.getPackage());
+		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.https.MediatorHttpsSubcomponent.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.mediator.manager.MediatorManagerRestService.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.artifact.war.RestServlet.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.artifact.generators.WarGenerator.class.getPackage());
@@ -296,51 +301,61 @@ public class MediatorGenerator{
 		
 		String gm_soap_pomxml;
 		String gm_coap_pomxml;
+		String gm_coaps_pomxml;
 		String gm_dpws_pomxml;
 		String gm_websocket_pomxl;
 		String gm_mqtt_pomxl;
 		String gm_rest_pomxl;
 		String gm_soap_war_pomxml;
+		String gm_https_pomxl;
 
 		if (STARTING_FROM_JAR){
 
 			gm_soap_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-soap.xml");
 			gm_coap_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-coap.xml");
+			gm_coaps_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-coaps.xml");
 			gm_dpws_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-dpws.xml");
 			gm_websocket_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-websocket.xml");
 			gm_rest_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-rest.xml");
 			gm_mqtt_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-mqtt.xml");
 			gm_soap_war_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-soap-war.xml");
+			gm_https_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-https.xml");
 	
 
 		}else{
 
-			gm_soap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
+			gm_soap_pomxml = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
 					+ File.separator + "resources" + File.separator + "pom-gm-soap.xml";
-			gm_coap_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-coap.xml";
-			gm_dpws_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-dpws.xml";
-			gm_websocket_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-websocket.xml";
-			gm_rest_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-rest.xml";
-			gm_mqtt_pomxl = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-							+ File.separator + "resources" + File.separator + "pom-gm-mqtt.xml";
-			gm_soap_war_pomxml = new File(".").getAbsolutePath() + File.separator + "src" + File.separator + "main"
-					+ File.separator + "resources" + File.separator + "pom-gm-soap-war.xml";
 
+			gm_coap_pomxml = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-coap.xml";
+			gm_coaps_pomxml = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-coaps.xml";
+			gm_dpws_pomxml = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-dpws.xml";
+			gm_websocket_pomxl = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-websocket.xml";
+			gm_rest_pomxl = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-rest.xml";
+			gm_mqtt_pomxl = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-mqtt.xml";
+			gm_soap_war_pomxml = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-soap-war.xml";
+			gm_https_pomxl = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-https.xml";
 		}
 
 		HashMap<String, String> hmapPomXml = new HashMap<String, String>();
 
 		hmapPomXml.put("coap", gm_coap_pomxml);
+		hmapPomXml.put("coaps", gm_coaps_pomxml);
 		hmapPomXml.put("dpws", gm_dpws_pomxml);
 		hmapPomXml.put("mqtt", gm_mqtt_pomxl);
 		hmapPomXml.put("websocket", gm_websocket_pomxl);
 		hmapPomXml.put("soap", gm_soap_pomxml);
 		hmapPomXml.put("rest", gm_rest_pomxl);
 		hmapPomXml.put("soapwar", gm_soap_war_pomxml);
+		hmapPomXml.put("https", gm_https_pomxl);
 
 
 		Generator generator = new Generator(busProtocol);
@@ -351,8 +366,8 @@ public class MediatorGenerator{
 		Class[] classesOptions = new Class[]{
 
 				MediatorManagerRestService.class, MediatorGmSubcomponent.class, MediatorGmSubcomponent.class, MediatorWebsocketSubcomponent.class, MediatorRestSubcomponent.class,
-				MediatorSoapSubcomponent.class, MediatorCoapSubcomponent.class, MediatorDPWSSubcomponent.class, MediatorMQTTSubcomponent.class,
-				ServiceDescriptionParser.class, MediatorConfiguration.class, MediatorSoapSubcomponent.class, ObjectMapper.class,
+				MediatorSoapSubcomponent.class, MediatorCoapSubcomponent.class, MediatorCoapsSubcomponent.class, MediatorDPWSSubcomponent.class, MediatorMQTTSubcomponent.class,
+				ServiceDescriptionParser.class, MediatorConfiguration.class, MediatorSoapSubcomponent.class, MediatorHttpsSubcomponent.class, ObjectMapper.class,
 				TypeFactory.class, Versioned.class, ResolvedType.class, JsonProperty.class 
 		};
 		
@@ -594,10 +609,14 @@ public class MediatorGenerator{
 				.ref(org.zefxis.dexms.dex.protocols.mqtt.MediatorMQTTSubcomponent.class);
 		JClass BcCoapSubcomponentClass = jCodeModel
 				.ref(org.zefxis.dexms.dex.protocols.coap.MediatorCoapSubcomponent.class);
+		JClass BcCoapsSubcomponentClass = jCodeModel
+				.ref(org.zefxis.dexms.dex.protocols.coaps.MediatorCoapsSubcomponent.class);
 		JClass BcDpwsSubcomponentClass = jCodeModel
 				.ref(org.zefxis.dexms.dex.protocols.dpws.MediatorDPWSSubcomponent.class);
 		JClass BcWebSocketSubcomponentClass = jCodeModel
 				.ref(org.zefxis.dexms.dex.protocols.websocket.MediatorWebsocketSubcomponent.class);
+		JClass BcHttpsSubcomponentClass = jCodeModel
+				.ref(org.zefxis.dexms.dex.protocols.https.MediatorHttpsSubcomponent.class);
 
 		JClass BcConfigurationClass = jCodeModel.ref(org.zefxis.dexms.gmdl.utils.MediatorConfiguration.class);
 		
@@ -695,6 +714,14 @@ public class MediatorGenerator{
 			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
 					JExpr._new(BcCoapSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
 			break;
+			
+		case COAPS:
+			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
+				createConfigFileBusProtocole(ProtocolType.COAPS, gmServiceRepresentation.getHostAddress(), Constants.webapp_src_artifact + File.separator
+						+ "config" + File.separator + "config_block1_interface_" + String.valueOf(i));
+			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
+					JExpr._new(BcCoapsSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
+			break;
 
 		case DPWS:
 			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
@@ -703,7 +730,14 @@ public class MediatorGenerator{
 			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
 					JExpr._new(BcDpwsSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
 			break;
-
+			
+		case HTTPS:
+			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
+				createConfigFileBusProtocole(ProtocolType.HTTPS, gmServiceRepresentation.getHostAddress(),Constants.webapp_src_artifact + File.separator
+						+ "config" + File.separator + "config_block1_interface_" + String.valueOf(i));
+			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
+					JExpr._new(BcHttpsSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
+			break;
 		case JMS:
 			break;
 		case PUB_NUB:
@@ -757,6 +791,14 @@ public class MediatorGenerator{
 			forBlock.assign(JExpr.ref("subcomponent[i][1]"),
 					JExpr._new(BcCoapSubcomponentClass).arg(bcConfig2Var).arg(GmServiceRepresentationVar));
 			break;
+			
+		case COAPS:
+			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
+				createConfigFileGmServiceProtocole(ProtocolType.COAPS, gmServiceRepresentation.getHostAddress(), Constants.webapp_src_artifact + File.separator
+						+ "config" + File.separator + "config_block2_interface_" + String.valueOf(i));
+			forBlock.assign(JExpr.ref("subcomponent[i][1]"),
+					JExpr._new(BcCoapsSubcomponentClass).arg(bcConfig2Var).arg(GmServiceRepresentationVar));
+			break;
 
 		case DPWS:
 			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
@@ -775,8 +817,13 @@ public class MediatorGenerator{
 					JExpr._new(BcWebSocketSubcomponentClass).arg(bcConfig2Var).arg(GmServiceRepresentationVar));
 			
 			break;
-			
-
+		
+		case HTTPS:
+			for(int i=1; i<=gmServiceRepresentation.getInterfaces().size(); i++)  
+				createConfigFileGmServiceProtocole(ProtocolType.HTTPS, gmServiceRepresentation.getHostAddress(), Constants.webapp_src_artifact + File.separator + "config" + File.separator + "config_block2_interface_" + String.valueOf(i));
+			forBlock.assign(JExpr.ref("subcomponent[i][1]"), JExpr._new(BcHttpsSubcomponentClass).arg(bcConfig2Var).arg(GmServiceRepresentationVar));
+			System.out.println("I'm here");
+			break;
 		case JMS:
 			break;
 		case PUB_NUB:
@@ -962,6 +1009,17 @@ public class MediatorGenerator{
 			jsonObject.put("invocation_address", host_bus);
 
 			break;
+			
+		case COAPS:
+
+			jsonObject.put("target_namespace", Constants.target_namespace);
+			jsonObject.put("service_name", Constants.soap_service_name);
+			jsonObject.put("subcomponent_port", port);
+			jsonObject.put("service_port", port);
+			jsonObject.put("subcomponent_address", host_bus);
+			jsonObject.put("invocation_address", host_bus);
+
+			break;
 
 		case DPWS:
 
@@ -984,8 +1042,17 @@ public class MediatorGenerator{
 			jsonObject.put("invocation_address", host_bus);
 
 			break;
-
+		
+		case HTTPS:
+			jsonObject.put("target_namespace", Constants.target_namespace);
+			jsonObject.put("service_name", Constants.soap_service_name);
+			jsonObject.put("subcomponent_port", port);
+			jsonObject.put("service_port", port);
+			jsonObject.put("subcomponent_address", host_bus);
+			jsonObject.put("invocation_address", host_bus);
+			break;
 		}
+			
 
 		// temporarily disabled
 		try (FileWriter file = new FileWriter(filename)) {
@@ -1073,6 +1140,17 @@ public class MediatorGenerator{
 			jsonObject.put("invocation_address", host_service);
 
 			break;
+			
+		case COAPS:
+
+			jsonObject.put("target_namespace", Constants.target_namespace);
+			jsonObject.put("service_name", Constants.soap_service_name);
+			jsonObject.put("subcomponent_port", port);
+			jsonObject.put("service_port", port);
+			jsonObject.put("subcomponent_address", host_service);
+			jsonObject.put("invocation_address", host_service);
+
+			break;
 
 		case DPWS:
 
@@ -1095,7 +1173,16 @@ public class MediatorGenerator{
 			jsonObject.put("invocation_address", host_service);
 
 			break;
-
+		
+		case HTTPS:
+			jsonObject.put("target_namespace", Constants.target_namespace);
+			jsonObject.put("service_name", Constants.soap_service_name);
+			jsonObject.put("subcomponent_port", port);
+			jsonObject.put("service_port", port);
+			jsonObject.put("subcomponent_address", host_service+":"+port);
+			jsonObject.put("invocation_address", "http://"+host_service+":"+port+"/");
+			
+			break;
 		}
 
 		// temporarily disabled

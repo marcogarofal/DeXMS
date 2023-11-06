@@ -31,7 +31,6 @@ public class CoapRequestBuilder implements RequestBuilder {
 	
 	
 	public static CoapRequest buildCoapRequest(final String destination, final String scope, final List<Data<?>> datas) {
-		System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		CoapRequest request = new CoapRequest();
 		request.setDestination(destination);
 		request.setScope(scope);
