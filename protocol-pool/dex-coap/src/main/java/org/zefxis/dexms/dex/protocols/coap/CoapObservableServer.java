@@ -28,7 +28,6 @@ public class CoapObservableServer extends Thread {
 
 	public CoapObservableServer(GmServiceRepresentation serviceRepresentation, String hostIp, int hostport,
 			BlockingQueue<String> waitingQueue) {
-		System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		this.waitingQueue = waitingQueue;
 		this.hostIp = hostIp;
 		this.hostport = hostport;
@@ -66,7 +65,6 @@ public class CoapObservableServer extends Thread {
 		coapServer.add(coapObservableResource);
 
 		coapServer.start();
-		System.out.println("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
 		while (true) {
 

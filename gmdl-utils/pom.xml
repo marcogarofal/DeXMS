@@ -9,6 +9,13 @@
   <name>gmdl-utils</name>
   <description>GMDL Utils provides classes to parse and instantiate a GMDL representation of a system to be binded, based on its description file</description>
   <dependencies>
+	  <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
   <dependency>
     <groupId>com.googlecode.json-simple</groupId>
     <artifactId>json-simple</artifactId>

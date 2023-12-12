@@ -29,9 +29,6 @@ public abstract class MediatorGmSubcomponent implements Manageable{
   
   
   public void setNextComponent(MediatorGmSubcomponent nextComponent) {
-	  System.out.println("setNextComponent");
-	  System.out.println("setNextComponent");
-	  System.out.println("setNextComponent");
 	  System.out.println(nextComponent.toString());
     this.nextComponent = nextComponent; 
   }

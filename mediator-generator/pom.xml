@@ -32,6 +32,29 @@
 			<artifactId>org.restlet</artifactId>
 			<version>2.3.1</version>
 		</dependency>
+				<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-servlet</artifactId>
+    <version>9.4.12.RC0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-http</artifactId>
+    <version>9.4.12.RC0</version>
+</dependency>
+
+     <dependency>
+        <groupId>org.eclipse.jetty</groupId>
+        <artifactId>jetty-server</artifactId>
+        <version>9.4.12.RC0</version> <!-- Use the latest Jetty version -->
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util -->
+<dependency>
+    <groupId>org.eclipse.jetty</groupId>
+    <artifactId>jetty-util</artifactId>
+    <version>9.4.12.RC0</version>
+</dependency>
 
 		<!--  -->
 		<dependency>
@@ -71,6 +94,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-https</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>service-parser</artifactId>
 			<version>${DeXMS.version}</version>
 		</dependency>
@@ -104,6 +132,7 @@
 					<include>pom-gm-soap.xml</include>
 					<include>pom-gm-websocket.xml</include>
 					<include>pom-gm-soap-war.xml</include>
+					<include>pom-gm-https.xml</include>
 				</includes>
 				<excludes>
 					<exclude>src/main/resources/target</exclude>

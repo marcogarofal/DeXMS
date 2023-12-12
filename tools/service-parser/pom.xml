@@ -23,6 +23,7 @@
       </snapshots>
    </repository>
    </repositories>
+   
 
 
 	<properties>
@@ -59,6 +60,16 @@
 		  <artifactId>eu.chorevolution.modelingnotations.gidl</artifactId>
 		  <version>1.0.1-SNAPSHOT</version>
 		</dependency>
+		
+<dependency>
+        <groupId>org.zefxis.dexms</groupId>
+        <artifactId>dex-https</artifactId>
+        <version>1.0.0</version>
+        <scope>system</scope>
+        <systemPath>/Users/zbenomar/Desktop/secure-CP4SC/DeXMS-CP4SC/protocol-pool/dex-https/target/dex-https-1.0.0-SNAPSHOT-javadoc.jar</systemPath>
+    </dependency>
+		
+		
  
 		<dependency>
 			<groupId>junit</groupId>
@@ -82,4 +93,17 @@
 			<version>${DeXMS.version}</version>
 		</dependency>
 	</dependencies>
+	<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.3.0</version> <!-- Use the appropriate version -->
+            <configuration>
+				<skip>true</skip> <!-- Skip Javadoc generation -->
+
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 </project>
