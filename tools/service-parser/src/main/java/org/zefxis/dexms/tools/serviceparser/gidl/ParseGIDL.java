@@ -60,9 +60,9 @@ public class ParseGIDL {
 	public GmServiceRepresentation parse(String gidl){
 		GIDLModel model = null;
 		try {
-			
+			System.out.println("Before Parsing");
 			model = Utils.loadGIDLModel(URI.createURI(new File(gidl).toURI().toString()));
-			
+			System.out.println("After Parsing");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -334,9 +334,14 @@ public class ParseGIDL {
 			break;
 		case HTTPS:
 			serviceRepresentation.setProtocol(ProtocolType.HTTPS);
+			break;
 		case COAPS:
 			serviceRepresentation.setProtocol(ProtocolType.COAPS);
-		}
+			break;
+		case MQTTS:
+				serviceRepresentation.setProtocol(ProtocolType.MQTTS);
+		break;
+	}
 	}
 
 	private Scope getScope(

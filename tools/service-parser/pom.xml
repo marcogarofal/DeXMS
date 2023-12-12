@@ -55,11 +55,6 @@
 		  <version>1.0.0</version>
 		</dependency> -->
 		
-		<dependency>
-		  <groupId>eu.chorevolution.modelingnotations</groupId>
-		  <artifactId>eu.chorevolution.modelingnotations.gidl</artifactId>
-		  <version>1.0.1-SNAPSHOT</version>
-		</dependency>
 				
 	
 		<dependency>

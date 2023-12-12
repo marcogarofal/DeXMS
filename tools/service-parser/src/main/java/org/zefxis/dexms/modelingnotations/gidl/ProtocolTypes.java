@@ -34,6 +34,16 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ProtocolTypes implements Enumerator {
 	/**
+	 * The '<em><b>MQTTS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *   #MQTTS_VALUE
+	 *   
+	 *  
+	 */
+	MQTTS(13, "MQTTS", "MQTTS"),
+	
+	/**
 	 * The '<em><b>COAPS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -351,6 +361,14 @@ public enum ProtocolTypes implements Enumerator {
 	 * <!-- end-user-doc -->
 	 *   
 	 */
+	public static final int MQTTS_VALUE = 13;
+
+	/**
+	 * An array of all the '<em><b>Protocol Types</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *   
+	 */
 	private static final ProtocolTypes[] VALUES_ARRAY =
 		new ProtocolTypes[] {
 			REST,
@@ -366,6 +384,7 @@ public enum ProtocolTypes implements Enumerator {
 			XMPP,
 			HTTPS,
 			COAPS,
+			MQTTS,
 		};
 
 	/**
@@ -435,6 +454,7 @@ public enum ProtocolTypes implements Enumerator {
 			case XMPP_VALUE: return XMPP;
 			case HTTPS_VALUE: return HTTPS;
 			case COAPS_VALUE: return COAPS;
+			case MQTTS_VALUE: return MQTTS;
 		}
 		return null;
 	}

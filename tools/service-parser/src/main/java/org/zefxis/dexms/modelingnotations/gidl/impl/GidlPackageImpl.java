@@ -876,6 +876,8 @@ public class GidlPackageImpl extends EPackageImpl implements GidlPackage {
 		addEEnumLiteral(protocolTypesEEnum, ProtocolTypes.WEB_SOCKETS);
 		addEEnumLiteral(protocolTypesEEnum, ProtocolTypes.DPWS);
 		addEEnumLiteral(protocolTypesEEnum, ProtocolTypes.HTTPS);
+		addEEnumLiteral(protocolTypesEEnum, ProtocolTypes.COAPS);
+		addEEnumLiteral(protocolTypesEEnum, ProtocolTypes.MQTTS);
 		
 
 		initEEnum(simpleTypesEEnum, SimpleTypes.class, "SimpleTypes");

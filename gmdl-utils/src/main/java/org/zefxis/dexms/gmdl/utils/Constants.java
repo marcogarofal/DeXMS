@@ -90,6 +90,21 @@ public class Constants {
 			port = 9906;
 
 			break;
+		case "BcHttpsSubcomponent":
+
+			port = 9907;
+
+			break;
+		case "BcCoapsSubcomponent":
+
+			port = 9908;
+
+			break;
+		case "BcMQTTSSubcomponent":
+
+			port = 9909;
+
+			break;
 
 		default:
 			break;
