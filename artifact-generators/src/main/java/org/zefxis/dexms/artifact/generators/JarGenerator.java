@@ -128,7 +128,18 @@ public class JarGenerator {
 
 			buidAndMergeArchives(hmapPomXml.get("dpws"));
 		}
+		if (busProtocol == ProtocolType.HTTPS || serviceProtocol == ProtocolType.HTTPS) {
 
+			buidAndMergeArchives(hmapPomXml.get("https"));
+		}
+		if (busProtocol == ProtocolType.COAPS || serviceProtocol == ProtocolType.COAPS) {
+
+			buidAndMergeArchives(hmapPomXml.get("coaps"));
+		}
+		if (busProtocol == ProtocolType.MQTTS || serviceProtocol == ProtocolType.MQTTS) {
+
+			buidAndMergeArchives(hmapPomXml.get("mqtts"));
+		}
 	}
 	
 	

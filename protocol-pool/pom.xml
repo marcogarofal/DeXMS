@@ -21,6 +21,7 @@
     <module>dex-websocket</module>
     <module>dex-https</module>
     <module>dex-coaps</module>
+    <module>dex-mqtts</module>
   </modules>
   <dependencies>
     <!-- Chorevolution -->

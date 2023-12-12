@@ -8,6 +8,7 @@ public enum OneWayType {
 	COAP_to_WEBSOCKET,
 	COAP_to_HTTPS,
 	COAP_to_COAPS,
+	COAP_to_MQTTS,
 	
 	DPWS_to_COAP,
 	DPWS_to_REST,
@@ -15,6 +16,7 @@ public enum OneWayType {
 	DPWS_to_WEBSOCKET,
 	DPWS_to_HTTPS,
 	DPWS_to_COAPS,
+	DPWS_to_MQTTS,
 	
 	REST_to_COAP,
 	REST_to_DPWS,
@@ -22,6 +24,7 @@ public enum OneWayType {
 	REST_to_WEBSOCKET,
 	REST_to_HTTPS,
 	REST_to_COAPS,
+	REST_to_MQTTS,
 	
 	MQTT_to_COAP,
 	MQTT_to_REST,
@@ -29,6 +32,7 @@ public enum OneWayType {
 	MQTT_to_WEBSOCKET,
 	MQTT_to_HTTPS,
 	MQTT_to_COAPS,
+	MQTT_to_MQTTS,
 	
 	WEBSOCKET_to_COAP,
 	WEBSOCKET_to_REST,
@@ -36,6 +40,7 @@ public enum OneWayType {
 	WEBSOCKET_to_MQTT,
 	WEBSOCKET_to_HTTPS,
 	WEBSOCKET_to_COAPS,
+	WEBSOCKET_to_MQTTS,
 	
 	HTTPS_to_COAP,
 	HTTPS_to_DPWS,
@@ -43,12 +48,22 @@ public enum OneWayType {
 	HTTPS_to_MQTT,
 	HTTPS_to_WEBSOCKET,
 	HTTPS_to_COAPS,
+	HTTPS_to_MQTTS,
 	
 	COAPS_to_COAP,
 	COAPS_to_DPWS,
 	COAPS_to_REST,
 	COAPS_to_MQTT,
 	COAPS_to_WEBSOCKET,
-	COAPS_to_HTTPS;
+	COAPS_to_HTTPS,
+	COAPS_to_MQTTS,
+	
+	MQTTS_to_COAP,
+	MQTTS_to_DPWS,
+	MQTTS_to_REST,
+	MQTTS_to_MQTT,
+	MQTTS_to_WEBSOCKET,
+	MQTTS_to_HTTPS,
+	MQTTS_to_COAPS;
 	
 }

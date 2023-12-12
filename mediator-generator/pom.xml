@@ -92,6 +92,11 @@
 			<artifactId>dex-mqtt</artifactId>
 			<version>${DeXMS.version}</version>
 		</dependency>
+				<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-mqtts</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>dex-websocket</artifactId>
@@ -134,6 +139,7 @@
 					<include>pom-gm-coap.xml</include>
 					<include>pom-gm-rest.xml</include>
 					<include>pom-gm-mqtt.xml</include>
+					<include>pom-gm-mqtts.xml</include>
 					<include>pom-gm-soap.xml</include>
 					<include>pom-gm-websocket.xml</include>
 					<include>pom-gm-soap-war.xml</include>

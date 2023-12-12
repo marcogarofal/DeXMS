@@ -5,7 +5,6 @@
 		<groupId>org.zefxis.dexms</groupId>
 		<artifactId>protocol-pool</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>dex-https</artifactId>
 	<name>dex-https</name>
@@ -14,6 +13,21 @@
 		  <restlet-version>2.4.3</restlet-version>
 
 	</properties>
+	<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+                <!-- other configurations -->
+                <includes>
+                    <include>**/AppTest.java</include>
+                </includes>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 <repositories>
   <repository>
     <id>maven-restlet</id>
@@ -22,6 +36,26 @@
   </repository>
 </repositories>
 	<dependencies>
+				<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		      <dependency>
+         <groupId>org.eclipse.emf</groupId>
+         <artifactId>org.eclipse.emf.common</artifactId>
+         <version>2.11.0-v20150805-0538</version>
+      </dependency>
+      <dependency>
+         <groupId>org.eclipse.emf</groupId>
+         <artifactId>org.eclipse.emf.ecore</artifactId>
+         <version>2.11.1-v20150805-0538</version>
+      </dependency>
+      <dependency>
+         <groupId>org.eclipse.emf</groupId>
+         <artifactId>org.eclipse.emf.ecore.xmi</artifactId>
+         <version>2.11.1-v20150805-0538</version>
+      </dependency>
 		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client -->
 <dependency>
     <groupId>org.eclipse.jetty</groupId>
@@ -35,11 +69,6 @@
     <version>4.5.13</version>
 </dependency>
 
-<!-- 		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.0.1</version>
-		</dependency>-->
 		<dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>

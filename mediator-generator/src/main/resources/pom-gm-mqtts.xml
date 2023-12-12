@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>MediatorGeneratorTest</groupId>
+	<artifactId>MediatorGeneratorTest-mqtts</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.5</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<!-- REST library: Restlet -->
+		<repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.org</url>
+		</repository>
+
+	</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.12.RELEASE</spring.version>
+		<cxf.version>3.2.1</cxf.version>
+		<jax.ws.rs>2.0.1</jax.ws.rs>
+		<axis2.version>1.7.5</axis2.version>
+		<axis2.stable.version>1.7.5</axis2.stable.version>
+		<DeXMS.version>1.0.0-SNAPSHOT</DeXMS.version>
+	</properties>
+
+	<dependencies>
+
+
+<!-- Apache Paho -->
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+		<!-- MQTT client -->
+		<dependency>
+    		<groupId>org.eclipse.paho</groupId>
+    		<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+    		<version>1.2.5</version>
+		</dependency>
+		
+		<dependency>
+    <groupId>org.apache.activemq</groupId>
+    <artifactId>artemis-core-client</artifactId>
+    <version>2.31.2</version>
+</dependency>
+
+
+		<!-- BCgenerator -->
+
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>artifact-generators</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>gmdl-utils</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-mqtt</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-mqtts</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>service-parser</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>mediator-manager</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160807</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+
+	</dependencies>
+
+</project>
+

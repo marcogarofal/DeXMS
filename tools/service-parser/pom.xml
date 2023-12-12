@@ -54,20 +54,6 @@
 		  <artifactId>eu.chorevolution.modelingnotations.gidl</artifactId>
 		  <version>1.0.0</version>
 		</dependency> -->
-		
-		<dependency>
-		  <groupId>eu.chorevolution.modelingnotations</groupId>
-		  <artifactId>eu.chorevolution.modelingnotations.gidl</artifactId>
-		  <version>1.0.1-SNAPSHOT</version>
-		</dependency>		
-<dependency>
-        <groupId>org.zefxis.dexms</groupId>
-        <artifactId>dex-https</artifactId>
-        <version>1.0.0</version>
-        <scope>system</scope>
-        <systemPath>/Users/zbenomar/Desktop/secure-CP4SC/DeXMS-CP4SC/protocol-pool/dex-https/target/dex-https-1.0.0-SNAPSHOT-javadoc.jar</systemPath>
-    </dependency>		
-	
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

@@ -62,7 +62,6 @@ public class MediatorCoapsSubcomponent extends MediatorGmSubcomponent {
 		switch (this.bcConfiguration.getSubcomponentRole()) {
 
 		case SERVER:
-			System.out.println("This server expose the data received using an HTTPS resource ");
 			server = new CoapsObservableServer(serviceRepresentation, this.bcConfiguration.getServiceAddress(), this.bcConfiguration.getSubcomponentPort(), waitingQueue);
 
 

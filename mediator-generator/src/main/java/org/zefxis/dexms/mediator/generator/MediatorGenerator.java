@@ -23,6 +23,7 @@ import org.zefxis.dexms.dex.protocols.coap.MediatorCoapSubcomponent;
 import org.zefxis.dexms.dex.protocols.coaps.MediatorCoapsSubcomponent;
 import org.zefxis.dexms.dex.protocols.dpws.MediatorDPWSSubcomponent;
 import org.zefxis.dexms.dex.protocols.mqtt.MediatorMQTTSubcomponent;
+import org.zefxis.dexms.dex.protocols.mqtts.MediatorMQTTSSubcomponent;
 import org.zefxis.dexms.dex.protocols.primitives.MediatorGmSubcomponent;
 import org.zefxis.dexms.dex.protocols.rest.MediatorRestSubcomponent;
 import org.zefxis.dexms.dex.protocols.soap.MediatorSoapGenerator;
@@ -93,7 +94,7 @@ public class MediatorGenerator{
 	 * @param interfaceDescriptionPath
 	 *            string path of a gidl or gmdl file
 	 * @param busProtocol
-	 *            the protocole type to use (SOAP, REST, ...)
+	 *            the protocol type to use (SOAP, REST, ...)
 	 * @param service_name
 	 *            the name of the service will be generated
 	 * @return VsbOutput object
@@ -103,6 +104,7 @@ public class MediatorGenerator{
 
 		service_name = deleteSpecialChar(service_name);
 		Constants.service_name = service_name;
+		System.out.println("The protocol type here is:" + busProtocol);
 		MediatorOutput vsbOutput = generate(interfaceDescriptionPath, busProtocol);
 		return vsbOutput;
 	}
@@ -119,7 +121,7 @@ public class MediatorGenerator{
 	 * @param interfaceDescriptionPath
 	 *            string path of a gidl or gmdl file
 	 * @param busProtocol
-	 *            the protocole type to use (SOAP, REST, ...)
+	 *            the protocol type to use (SOAP, REST, ...)
 	 * @param service_name
 	 *            the name of the service will be generated
 	 * @return VsbOutput object
@@ -286,6 +288,7 @@ public class MediatorGenerator{
 		warGenerator.addPackage(org.zefxis.dexms.gmdl.utils.enums.OperationType.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.dpws.MediatorDPWSGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.mqtt.MediatorMQTTGenerator.class.getPackage());
+		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.mqtts.MediatorMQTTSGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.websocket.MediatorWebsocketGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.coap.MediatorCoapGenerator.class.getPackage());
 		warGenerator.addPackage(org.zefxis.dexms.dex.protocols.coaps.MediatorCoapsGenerator.class.getPackage());
@@ -305,6 +308,7 @@ public class MediatorGenerator{
 		String gm_dpws_pomxml;
 		String gm_websocket_pomxl;
 		String gm_mqtt_pomxl;
+		String gm_mqtts_pomxl;
 		String gm_rest_pomxl;
 		String gm_soap_war_pomxml;
 		String gm_https_pomxl;
@@ -318,6 +322,7 @@ public class MediatorGenerator{
 			gm_websocket_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-websocket.xml");
 			gm_rest_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-rest.xml");
 			gm_mqtt_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-mqtt.xml");
+			gm_mqtts_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-mqtts.xml");
 			gm_soap_war_pomxml = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-soap-war.xml");
 			gm_https_pomxl = PathResolver.myFilePath(MediatorManagerRestService.class, "pom-gm-https.xml");
 	
@@ -343,6 +348,8 @@ public class MediatorGenerator{
 					+ File.separator + "resources" + File.separator + "pom-gm-soap-war.xml";
 			gm_https_pomxl = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
 					+ File.separator + "resources" + File.separator + "pom-gm-https.xml";
+			gm_mqtts_pomxl = new File(".").getAbsolutePath() + File.separator + ".." +File.separator + "mediator-generator" + File.separator + "src" + File.separator + "main"
+					+ File.separator + "resources" + File.separator + "pom-gm-mqtts.xml";
 		}
 
 		HashMap<String, String> hmapPomXml = new HashMap<String, String>();
@@ -356,6 +363,7 @@ public class MediatorGenerator{
 		hmapPomXml.put("rest", gm_rest_pomxl);
 		hmapPomXml.put("soapwar", gm_soap_war_pomxml);
 		hmapPomXml.put("https", gm_https_pomxl);
+		hmapPomXml.put("mqtts", gm_mqtts_pomxl);
 
 
 		Generator generator = new Generator(busProtocol);
@@ -368,7 +376,7 @@ public class MediatorGenerator{
 				MediatorManagerRestService.class, MediatorGmSubcomponent.class, MediatorGmSubcomponent.class, MediatorWebsocketSubcomponent.class, MediatorRestSubcomponent.class,
 				MediatorSoapSubcomponent.class, MediatorCoapSubcomponent.class, MediatorDPWSSubcomponent.class, MediatorMQTTSubcomponent.class,
 				MediatorSoapSubcomponent.class, MediatorCoapSubcomponent.class, MediatorCoapsSubcomponent.class, MediatorDPWSSubcomponent.class, MediatorMQTTSubcomponent.class,
-				ServiceDescriptionParser.class, MediatorConfiguration.class, MediatorSoapSubcomponent.class, MediatorHttpsSubcomponent.class, ObjectMapper.class,
+				ServiceDescriptionParser.class, MediatorConfiguration.class, MediatorSoapSubcomponent.class, MediatorHttpsSubcomponent.class, MediatorMQTTSSubcomponent.class, ObjectMapper.class,
 				TypeFactory.class, Versioned.class, ResolvedType.class, JsonProperty.class 
 		};
 		
@@ -388,7 +396,7 @@ public class MediatorGenerator{
 			
 		}else{
 			
-			if(busProtocol == ProtocolType.SOAP){
+			if(busProtocol != ProtocolType.SOAP){
 					
 				vsbOutput.service_bc_port = Constants.service_bc_port;
 				vsbOutput.setinvaddr_service_port = Constants.setinvaddr_service_port;
@@ -618,6 +626,8 @@ public class MediatorGenerator{
 				.ref(org.zefxis.dexms.dex.protocols.websocket.MediatorWebsocketSubcomponent.class);
 		JClass BcHttpsSubcomponentClass = jCodeModel
 				.ref(org.zefxis.dexms.dex.protocols.https.MediatorHttpsSubcomponent.class);
+		JClass BcMQTTSSubcomponentClass = jCodeModel
+				.ref(org.zefxis.dexms.dex.protocols.mqtts.MediatorMQTTSSubcomponent.class);
 
 		JClass BcConfigurationClass = jCodeModel.ref(org.zefxis.dexms.gmdl.utils.MediatorConfiguration.class);
 		
@@ -739,6 +749,15 @@ public class MediatorGenerator{
 			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
 					JExpr._new(BcHttpsSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
 			break;
+			
+		case MQTTS:
+			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
+				createConfigFileBusProtocole(ProtocolType.MQTTS, gmServiceRepresentation.getHostAddress(), Constants.webapp_src_artifact + File.separator
+						+ "config" + File.separator + "config_block1_interface_" + String.valueOf(i));
+			forBlock.assign(JExpr.ref("subcomponent[i][0]"),
+					JExpr._new(BcMQTTSSubcomponentClass).arg(bcConfig1Var).arg(GmServiceRepresentationVar));
+			break;
+			
 		case JMS:
 			break;
 		case PUB_NUB:
@@ -823,7 +842,15 @@ public class MediatorGenerator{
 			for(int i=1; i<=gmServiceRepresentation.getInterfaces().size(); i++)  
 				createConfigFileGmServiceProtocole(ProtocolType.HTTPS, gmServiceRepresentation.getHostAddress(), Constants.webapp_src_artifact + File.separator + "config" + File.separator + "config_block2_interface_" + String.valueOf(i));
 			forBlock.assign(JExpr.ref("subcomponent[i][1]"), JExpr._new(BcHttpsSubcomponentClass).arg(bcConfig2Var).arg(GmServiceRepresentationVar));
-			System.out.println("I'm here");
+			
+			break;
+			
+		case MQTTS:
+			for (int i = 1; i <= gmServiceRepresentation.getInterfaces().size(); i++)
+				createConfigFileGmServiceProtocole(ProtocolType.MQTTS, gmServiceRepresentation.getHostAddress(), Constants.webapp_src_artifact + File.separator
+						+ "config" + File.separator + "config_block2_interface_" + String.valueOf(i));
+			forBlock.assign(JExpr.ref("subcomponent[i][1]"),
+					JExpr._new(BcMQTTSSubcomponentClass).arg(bcConfig2Var).arg(GmServiceRepresentationVar));
 			break;
 		case JMS:
 			break;
@@ -1052,6 +1079,16 @@ public class MediatorGenerator{
 			jsonObject.put("subcomponent_address", host_bus);
 			jsonObject.put("invocation_address", host_bus);
 			break;
+			
+		case MQTTS:
+
+			jsonObject.put("target_namespace", Constants.target_namespace);
+			jsonObject.put("service_name", Constants.soap_service_name);
+			jsonObject.put("subcomponent_port", port);
+			jsonObject.put("service_port", port);
+			jsonObject.put("subcomponent_address", host_bus);
+			jsonObject.put("invocation_address", host_bus);
+			break;
 		}
 			
 
@@ -1131,6 +1168,18 @@ public class MediatorGenerator{
 			jsonObject.put("invocation_address", host_service);
 
 			break;
+			
+		case MQTTS:
+
+			jsonObject.put("target_namespace", Constants.target_namespace);
+			jsonObject.put("service_name", Constants.soap_service_name);
+			jsonObject.put("subcomponent_port", port);
+			jsonObject.put("service_port", port);
+			jsonObject.put("subcomponent_address", host_service);
+			jsonObject.put("invocation_address", host_service);
+
+			break;
+			
 		case COAP:
 
 			jsonObject.put("target_namespace", Constants.target_namespace);
