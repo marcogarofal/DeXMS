@@ -9,7 +9,6 @@
 	<name>DeXMS (Data eXchange  Mediator  Synthesizer)</name>
 	<description>DeXMS provides tools to Synthesize and use Mediator for exchange between protocol</description>
 	<properties>
-    <dex-https-systemPath>/Users/zbenomar/Desktop/secure-CP4SC/DeXMS-CP4SC/protocol-pool/dex-https/target/dex-https-1.0.0-SNAPSHOT-javadoc.jar</dex-https-systemPath>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
