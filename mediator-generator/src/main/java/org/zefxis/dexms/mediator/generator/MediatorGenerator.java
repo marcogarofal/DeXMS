@@ -374,6 +374,7 @@ public class MediatorGenerator{
 		Class[] classesOptions = new Class[]{
 
 				MediatorManagerRestService.class, MediatorGmSubcomponent.class, MediatorGmSubcomponent.class, MediatorWebsocketSubcomponent.class, MediatorRestSubcomponent.class,
+				MediatorSoapSubcomponent.class, MediatorCoapSubcomponent.class, MediatorDPWSSubcomponent.class, MediatorMQTTSubcomponent.class,
 				MediatorSoapSubcomponent.class, MediatorCoapSubcomponent.class, MediatorCoapsSubcomponent.class, MediatorDPWSSubcomponent.class, MediatorMQTTSubcomponent.class,
 				ServiceDescriptionParser.class, MediatorConfiguration.class, MediatorSoapSubcomponent.class, MediatorHttpsSubcomponent.class, MediatorMQTTSSubcomponent.class, ObjectMapper.class,
 				TypeFactory.class, Versioned.class, ResolvedType.class, JsonProperty.class 
