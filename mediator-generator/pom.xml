@@ -84,6 +84,11 @@
 		</dependency>
 		<dependency>
 			<groupId>org.zefxis.dexms</groupId>
+			<artifactId>dex-coaps</artifactId>
+			<version>${DeXMS.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.zefxis.dexms</groupId>
 			<artifactId>dex-mqtt</artifactId>
 			<version>${DeXMS.version}</version>
 		</dependency>
@@ -133,6 +138,7 @@
 					<include>pom-gm-websocket.xml</include>
 					<include>pom-gm-soap-war.xml</include>
 					<include>pom-gm-https.xml</include>
+					<include>pom-gm-coaps.xml</include>
 				</includes>
 				<excludes>
 					<exclude>src/main/resources/target</exclude>

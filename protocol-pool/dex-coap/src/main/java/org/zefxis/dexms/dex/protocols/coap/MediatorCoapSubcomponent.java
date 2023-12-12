@@ -53,7 +53,6 @@ public class MediatorCoapSubcomponent extends MediatorGmSubcomponent {
 			
 			server.start();
 			
-
 			break;
 		case CLIENT:
 			

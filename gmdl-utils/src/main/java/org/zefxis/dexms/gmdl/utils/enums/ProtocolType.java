@@ -11,6 +11,7 @@ public enum ProtocolType {
   PUB_NUB,
   COAP,
   ZERO_MQ,
-  DPWS;
+  DPWS,
+  COAPS;
 }
 

@@ -20,6 +20,7 @@
     <module>dex-dpws</module>
     <module>dex-websocket</module>
     <module>dex-https</module>
+    <module>dex-coaps</module>
   </modules>
   <dependencies>
     <!-- Chorevolution -->

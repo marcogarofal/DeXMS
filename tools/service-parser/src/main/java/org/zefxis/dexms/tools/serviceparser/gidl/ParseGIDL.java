@@ -334,6 +334,8 @@ public class ParseGIDL {
 			break;
 		case HTTPS:
 			serviceRepresentation.setProtocol(ProtocolType.HTTPS);
+		case COAPS:
+			serviceRepresentation.setProtocol(ProtocolType.COAPS);
 		}
 	}
 

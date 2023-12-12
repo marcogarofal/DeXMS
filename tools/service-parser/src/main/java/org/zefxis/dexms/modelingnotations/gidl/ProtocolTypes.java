@@ -34,6 +34,16 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ProtocolTypes implements Enumerator {
 	/**
+	 * The '<em><b>COAPS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *   #COAPS_VALUE
+	 *   
+	 *  
+	 */
+	COAPS(12, "COAPS", "COAPS"),
+	
+	/**
 	 * The '<em><b>HTTPS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -333,6 +343,14 @@ public enum ProtocolTypes implements Enumerator {
 	 * <!-- end-user-doc -->
 	 *   
 	 */
+	public static final int COAPS_VALUE = 12;
+
+	/**
+	 * An array of all the '<em><b>Protocol Types</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *   
+	 */
 	private static final ProtocolTypes[] VALUES_ARRAY =
 		new ProtocolTypes[] {
 			REST,
@@ -347,6 +365,7 @@ public enum ProtocolTypes implements Enumerator {
 			DPWS,
 			XMPP,
 			HTTPS,
+			COAPS,
 		};
 
 	/**
@@ -415,6 +434,7 @@ public enum ProtocolTypes implements Enumerator {
 			case DPWS_VALUE: return DPWS;
 			case XMPP_VALUE: return XMPP;
 			case HTTPS_VALUE: return HTTPS;
+			case COAPS_VALUE: return COAPS;
 		}
 		return null;
 	}

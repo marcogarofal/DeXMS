@@ -14,15 +14,15 @@ public class I3Services {
 			MediatorGenerator mediator = new MediatorGenerator();
 
 			// Corresponds to the IP address and port number of the MQTT broker
-			mediator.setServiceEndpoint("127.0.0.1", "1883");
+			mediator.setServiceEndpoint("127.0.0.1", "6000");
 
 			// Corresponds to the IP address and port number of the CoAP endpoint
-			mediator.setBusEndpoint("127.0.0.1", "3333");
+			mediator.setBusEndpoint("127.0.0.1", "1883");
 
 			String gidlFile = "src/main/java/org/zefxis/dexms/examples/randomValue.gidl";
-			MediatorOutput output = mediator.generate(gidlFile, ProtocolType.HTTPS, "MQTT_TO_HTTPS");
+			MediatorOutput output = mediator.generate(gidlFile, ProtocolType.MQTT, "COAPS_TO_MQTT");
 			try {
-				FileUtils.writeByteArrayToFile(new File("MQTT_TO_HTTPS.jar"), output.jar);
+				FileUtils.writeByteArrayToFile(new File("COAPS_TO_MQTT.jar"), output.jar);
 			} 
 			catch (IOException e) {e.printStackTrace();}
 			
