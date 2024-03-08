@@ -28,7 +28,8 @@
 
  # install maven
 
- RUN wget http://apache.mirrors.benatherton.com/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
+ #RUN wget http://apache.mirrors.benatherton.com/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz
+ RUN wget https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.6.1/apache-maven-3.6.1-bin.tar.gz
  RUN gunzip apache-maven-3.6.1-bin.tar.gz
  RUN tar xvf apache-maven-3.6.1-bin.tar
  RUN cp -rf apache-maven-3.6.1 /usr/local/
@@ -81,7 +82,8 @@
  # clean and install DeXMS
  WORKDIR /app/git/DeXMS
  RUN git pull
- RUN source /etc/environment && mvn clean verify
+ #RUN source /etc/environment && mvn clean verify
+ RUN source /etc/environment
  RUN source /etc/environment && mvn install
  # deploy war ?
  WORKDIR /app/git/DeXMS/dexms-service
